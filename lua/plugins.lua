@@ -361,6 +361,16 @@ packer.startup {
     use { "ii14/emmylua-nvim", ft = "lua" }
 
     use { "j-hui/fidget.nvim", after = "nvim-lspconfig", config = [[require('config.fidget-nvim')]] }
+
+    -- wakatime to record coding time
+    use { "wakatime/vim-wakatime" }
+
+    -- github copilot
+    use { "github/copilot.vim", branch = 'release' }
+
+    -- floaterm
+    use { 'voldikss/vim-floaterm' }
+
   end,
   config = {
     max_jobs = 16,

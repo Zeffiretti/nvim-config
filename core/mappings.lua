@@ -243,3 +243,6 @@ keymap.set("n", "<leader>cb", function()
     cnt = cnt + 1
   end))
 end)
+
+-- use ,-t to toggle floaterm
+keymap.set("n", "<leader>t", ":<C-U>FloatermToggle!<CR>")

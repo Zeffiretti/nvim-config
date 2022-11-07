@@ -12,7 +12,7 @@ local api = vim.api
 local utils = require("utils")
 
 -- check if we have the latest stable version of nvim
-local expected_ver = "0.8.0"
+local expected_ver = "0.9.0"
 local nvim_ver = utils.get_nvim_version()
 
 if nvim_ver ~= expected_ver then
@@ -28,6 +28,7 @@ local core_conf_files = {
   "mappings.lua", -- all the user-defined mappings
   "plugins.vim", -- all the plugins installed and their configurations
   "colorschemes.lua", -- colorscheme settings
+  "other.vim", -- other custom settings, which will ovewrite those set int above files
 }
 
 -- source all the core config files
@@ -36,3 +37,7 @@ for _, name in ipairs(core_conf_files) do
   local source_cmd = "source " .. path
   vim.cmd(source_cmd)
 end
+
+-- pylsp
+-- require('lspconfig').pylsp.setup {}
+

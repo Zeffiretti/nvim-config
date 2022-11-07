@@ -104,12 +104,13 @@ if utils.executable("pylsp") then
     settings = {
       pylsp = {
         plugins = {
-          pylint = { enabled = true, executable = "pylint" },
+          pylint = { enabled = true, executable = "$HOME/.local/bin/pylint" },
           pyflakes = { enabled = false },
           pycodestyle = { enabled = false },
           jedi_completion = { fuzzy = true },
           pyls_isort = { enabled = true },
-          pylsp_mypy = { enabled = true },
+          pylsp_mypy = { enabled = false },
+          flake8 = { enabled = true },
         },
       },
     },
