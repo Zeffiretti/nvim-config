@@ -244,16 +244,19 @@ keymap.set("n", "<leader>cb", function()
   end))
 end)
 
--- use ,-t to toggle floaterm
--- keymap.set("n", "<space>c", ":FloatermToggle!<CR>")
--- keymap.set("v", "<space>c", ":FloatermToggle!<CR>")
--- keymap.set("i", "<space>c", "<Esc>:FloatermToggle!<CR>")
+-- use Alt-z to toggle floaterm
 keymap.set("n", "<A-z>", ":FloatermToggle!<CR>")
 keymap.set("t", "<A-z>", "<C-\\><C-n>:FloatermToggle<CR>")
+keymap.set("c", "<A-z>", "<Esc>:FloatermToggle!<CR>")
+keymap.set("i", "<A-z>", "<Esc><C-\\><C-n>:FloatermToggle!<CR>")
 keymap.set("v", "<A-z>", "<Esc>:FloatermToggle!<CR>")
-keymap.set("i", "<A-z>", "<Esc>:FloatermToggle!<CR>")
 
 -- use ctrl-/ to toggle comment
 keymap.set("n", "<C-_>", ":Commentary<CR>")
 keymap.set("v", "<C-_>", ":Commentary<CR>")
 keymap.set("i", "<C-_>", "<Esc>:Commentary<CR><Esc>i")
+
+-- use Alt-f to clang format current buffers
+-- keymap.set("n", "<A-f>", ":ClangFormatFile<CR>:w<Esc>")
+-- keymap.set("v", "<A-f>", ":ClangFormatFile<CR>:w<Esc>")
+-- keymap.set("i", "<A-f>", "<Esc>:ClangFormatFile<CR><Esc>i")

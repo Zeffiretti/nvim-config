@@ -68,27 +68,26 @@ function! s:custom_highlight() abort
   highlight MatchParen cterm=bold,underline gui=bold,underline
 endfunction
 
-augroup auto_close_win
-  autocmd!
-  autocmd BufEnter * call s:quit_current_win()
-augroup END
+" augroup auto_close_win
+"   autocmd!
+"   autocmd BufEnter * call s:quit_current_win()
+" augroup END
 
 " Quit Nvim if we have only one window, and its filetype match our pattern.
 function! s:quit_current_win() abort
   let l:quit_filetypes = ['qf', 'vista', 'NvimTree']
 
-  " let l:should_quit = v:true
-  let l:should_quit = v:false
+  let l:should_quit = v:true
 
-  " let l:tabwins = nvim_tabpage_list_wins(0)
-  " for w in l:tabwins
-  "   let l:buf = nvim_win_get_buf(w)
-  "   let l:bf = getbufvar(l:buf, '&filetype')
+  let l:tabwins = nvim_tabpage_list_wins(0)
+  for w in l:tabwins
+    let l:buf = nvim_win_get_buf(w)
+    let l:bf = getbufvar(l:buf, '&filetype')
 
-  "   if index(l:quit_filetypes, l:bf) == -1
-  "     let l:should_quit = v:false
-  "   endif
-  " endfor
+    if index(l:quit_filetypes, l:bf) == -1
+      let l:should_quit = v:false
+    endif
+  endfor
 
   if l:should_quit
     qall
@@ -120,5 +119,15 @@ augroup LargeFile
   autocmd BufReadPre * call s:handle_large_file()
 augroup END
 
+function! s:ClangFormat(first, last)
+  let l:winview = winsaveview()
+  execute a:first . "," . a:last . "!clang-format"
+  call winrestview(l:winview)
+endfunction
+command! -range=% ClangFormatFile call <sid>ClangFormat (<line1>, <line2>)
+" nnoremap <silent> <A-f> :ClangFormatFile<CR><Esc>:w<CR>
+" inoremap <silent> <A-f> <C-\><C-n>:ClangFormatFile<CR><Esc>:w<CR>)
+autocmd BufWritePre FileType c :ClangFormatFile
+autocmd BufWritePre *.c,*.cc,*.cpp,*.h,*.hh :ClangFormatFile
 " Load auto-command defined in Lua
 lua require("custom-autocmd")
