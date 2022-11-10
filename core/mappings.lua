@@ -245,10 +245,13 @@ keymap.set("n", "<leader>cb", function()
 end)
 
 -- use ,-t to toggle floaterm
-keymap.set("n", "<leader>cz", ":FloatermNew!<CR>")
-keymap.set("n", "<leader>ct", ":FloatermNew!<CR>")
-keymap.set("n", "<leader>cc", ":FloatermShow!<CR>")
-keymap.set("n", "<leader>cx", ":FloatermHide!<CR>")
+-- keymap.set("n", "<space>c", ":FloatermToggle!<CR>")
+-- keymap.set("v", "<space>c", ":FloatermToggle!<CR>")
+-- keymap.set("i", "<space>c", "<Esc>:FloatermToggle!<CR>")
+keymap.set("n", "<A-z>", ":FloatermToggle!<CR>")
+keymap.set("t", "<A-z>", "<C-\\><C-n>:FloatermToggle<CR>")
+keymap.set("v", "<A-z>", "<Esc>:FloatermToggle!<CR>")
+keymap.set("i", "<A-z>", "<Esc>:FloatermToggle!<CR>")
 
 -- use ctrl-/ to toggle comment
 keymap.set("n", "<C-_>", ":Commentary<CR>")
