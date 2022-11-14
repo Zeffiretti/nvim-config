@@ -8,16 +8,16 @@ local M = {}
 -- the same as the colorscheme name itself.
 M.colorscheme2dir = {
   gruvbox8 = "vim-gruvbox8",
-  onedark = "onedark.nvim",
-  edge = "edge",
-  sonokai = "sonokai",
-  gruvbox_material = "gruvbox-material",
+  -- onedark = "onedark.nvim",
+  -- edge = "edge",
+  -- sonokai = "sonokai",
+  -- gruvbox_material = "gruvbox-material",
   nord = "nord.nvim",
-  doom_one = "doom-one.nvim",
-  everforest = "everforest",
-  nightfox = "nightfox.nvim",
+  -- doom_one = "doom-one.nvim",
+  -- everforest = "everforest",
+  -- nightfox = "nightfox.nvim",
   kanagawa = "kanagawa.nvim",
-  catppuccin = "catppuccin",
+  -- catppuccin = "catppuccin",
 }
 
 M.gruvbox8 = function()
@@ -90,8 +90,8 @@ end
 
 --- Use a random colorscheme from the pre-defined list of colorschemes.
 M.rand_colorscheme = function()
-  -- local colorscheme = utils.rand_element(vim.tbl_keys(M.colorscheme2dir))
-  local colorscheme = "doom_one"
+  local colorscheme = utils.rand_element(vim.tbl_keys(M.colorscheme2dir))
+  -- local colorscheme = "doom_one"
 
   if not vim.tbl_contains(vim.tbl_keys(M), colorscheme) then
     local msg = "Invalid colorscheme: " .. colorscheme

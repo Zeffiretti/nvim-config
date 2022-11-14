@@ -7,6 +7,11 @@
 -- Author: Jie-dong Hao
 -- Email: jdhao@hotmail.com
 -- Blog: https://jdhao.github.io/
+--  _   _         __     ___
+-- | \ | | ___  __\ \   / (_)_ __ ___
+-- |  \| |/ _ \/ _ \ \ / /| | '_ ` _ \
+-- | |\  |  __/ (_) \ V / | | | | | | |
+-- |_| \_|\___|\___/ \_/  |_|_| |_| |_|
 
 local api = vim.api
 local utils = require("utils")

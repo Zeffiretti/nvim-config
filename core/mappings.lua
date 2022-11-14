@@ -256,6 +256,8 @@ keymap.set("n", "<C-_>", ":Commentary<CR>")
 keymap.set("v", "<C-_>", ":Commentary<CR>")
 keymap.set("i", "<C-_>", "<Esc>:Commentary<CR><Esc>i")
 
+keymap.set("n", "q", ":qall<CR>")
+
 -- use Alt-f to clang format current buffers
 -- keymap.set("n", "<A-f>", ":ClangFormatFile<CR>:w<Esc>")
 -- keymap.set("v", "<A-f>", ":ClangFormatFile<CR>:w<Esc>")

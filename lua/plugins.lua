@@ -66,7 +66,7 @@ packer.startup {
     -- nvim-lsp configuration (it relies on cmp-nvim-lsp, so it should be loaded after cmp-nvim-lsp).
     use { "neovim/nvim-lspconfig", after = "cmp-nvim-lsp", config = [[require('config.lsp')]] }
 
-    if vim.g.is_mac then
+    if vim.g.is_mac or vim.g.is_linux  then
       use {
         "nvim-treesitter/nvim-treesitter",
         event = "BufEnter",
@@ -370,6 +370,12 @@ packer.startup {
 
     -- floaterm
     use { 'voldikss/vim-floaterm' }
+
+    -- ros-nvim
+    -- use { 'thibthib18/ros-nvim', config=function()
+    --     require 'ros-nvim'.setup({})
+    --   end
+    -- }
 
   end,
   config = {
