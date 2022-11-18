@@ -38,5 +38,3 @@ endfunction
 " For delimitMate
 let b:delimitMate_matchpairs = "(:),[:],{:}"
 
-nnoremap <silent> <A-f> :ClangFormatFile<CR><Esc>:w<CR>
-inoremap <silent> <A-f> <C-\><C-n>:ClangFormatFile<CR><Esc>:w<CR>)

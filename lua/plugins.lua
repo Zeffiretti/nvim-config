@@ -49,7 +49,10 @@ packer.startup {
 
     use { "wbthomason/packer.nvim", opt = true }
 
-    use { "onsails/lspkind-nvim", event = "VimEnter" }
+    use { "onsails/lspkind-nvim",
+      -- after = "copilot.lua",
+      event = "VimEnter"
+    }
     -- auto-completion engine
     use { "hrsh7th/nvim-cmp", after = "lspkind-nvim", config = [[require('config.nvim-cmp')]] }
 
@@ -69,6 +72,7 @@ packer.startup {
     if vim.g.is_mac or vim.g.is_linux  then
       use {
         "nvim-treesitter/nvim-treesitter",
+        -- after = "copilot.lua",
         event = "BufEnter",
         run = ":TSUpdate",
         config = [[require('config.treesitter')]],
@@ -354,6 +358,7 @@ packer.startup {
     -- file explorer
     use {
       "kyazdani42/nvim-tree.lua",
+      after = "copilot.lua",
       requires = { "kyazdani42/nvim-web-devicons" },
       config = [[require('config.nvim-tree')]],
     }
@@ -366,10 +371,35 @@ packer.startup {
     use { "wakatime/vim-wakatime" }
 
     -- github copilot
-    use { "github/copilot.vim", branch = 'release' }
+    -- use { "github/copilot.vim", branch = 'release' }
+    use {
+      "zbirenbaum/copilot.lua",
+      -- after = "lualine.nvim",
+      -- event = "VimEnter",
+      config = [[require('config.copilot')]],
+    }
+    use {
+      "zbirenbaum/copilot-cmp",
+      after = "copilot.lua",
+      config = [[require('config.copilot-cmp')]]
+    }
 
     -- floaterm
     use { 'voldikss/vim-floaterm' }
+
+    -- wildfire
+    use { 'gcmt/wildfire.vim' }
+
+    -- surround
+    use{
+        "kylechui/nvim-surround",
+        tag = "*", -- Use for stability; omit to use `main` branch for the latest features
+        config = function()
+            require("nvim-surround").setup({
+                -- Configuration here, or leave empty to use defaults
+            })
+        end
+    }
 
     -- ros-nvim
     -- use { 'thibthib18/ros-nvim', config=function()

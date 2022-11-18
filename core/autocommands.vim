@@ -119,15 +119,7 @@ augroup LargeFile
   autocmd BufReadPre * call s:handle_large_file()
 augroup END
 
-function! s:ClangFormat(first, last)
-  let l:winview = winsaveview()
-  execute a:first . "," . a:last . "!clang-format"
-  call winrestview(l:winview)
-endfunction
-command! -range=% ClangFormatFile call <sid>ClangFormat (<line1>, <line2>)
-" nnoremap <silent> <A-f> :ClangFormatFile<CR><Esc>:w<CR>
-" inoremap <silent> <A-f> <C-\><C-n>:ClangFormatFile<CR><Esc>:w<CR>)
-autocmd BufWritePre FileType c :ClangFormatFile
-autocmd BufWritePre *.c,*.cc,*.cpp,*.h,*.hh :ClangFormatFile
+autocmd BufWritePre FileType c <Esc><space>f<CR>
+" autocmd BufWritePre FileTyargcall() <Esc><space>f<CR>
 " Load auto-command defined in Lua
 lua require("custom-autocmd")
