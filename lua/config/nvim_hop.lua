@@ -32,7 +32,7 @@ keymap.set({ "n", "v", "o" }, "b", "", {
   silent = true,
   noremap = true,
   callback = function()
-    vim.cmd('.g/^$/normal )')
+    vim.cmd('.g/^$/normal ()k$')
     hop.hint_words({direction=directions.BEFORE_CURSOR})
   end,
   desc = "nvim-hop words before cursor",
