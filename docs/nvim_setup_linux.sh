@@ -7,7 +7,7 @@ PYTHON_INSTALLED=true
 
 # If Python has been installed, then we need to know whether Python is provided
 # by the system, or you have already installed Python under your HOME.
-SYSTEM_PYTHON=false
+SYSTEM_PYTHON=true
 
 # If SYSTEM_PYTHON is false, we need to decide whether to install
 # Anaconda (INSTALL_ANACONDA=true) or Miniconda (INSTALL_ANACONDA=false)
@@ -116,10 +116,10 @@ else
 fi
 
 # Install vim-language-server
-"$NODE_DIR/bin/npm" install -g vim-language-server
+# "$NODE_DIR/bin/npm" install -g vim-language-server
 
 # Install bash-language-server
-"$NODE_DIR/bin/npm" install -g bash-language-server
+# "$NODE_DIR/bin/npm" install -g bash-language-server
 
 #######################################################################
 #                         lua-language-server                         #
@@ -218,45 +218,45 @@ fi
 #######################################################################
 #                                Nvim install                         #
 #######################################################################
-NVIM_DIR=$HOME/tools/nvim
-NVIM_SRC_NAME=$HOME/packages/nvim-linux64.tar.gz
-NVIM_CONFIG_DIR=$HOME/.config/nvim
-NVIM_LINK="https://github.com/neovim/neovim/releases/download/stable/nvim-linux64.tar.gz"
-if [[ ! -f "$NVIM_DIR/bin/nvim" ]]; then
-    echo "Installing Nvim"
-    echo "Creating nvim directory under tools directory"
+# NVIM_DIR=$HOME/tools/nvim
+# NVIM_SRC_NAME=$HOME/packages/nvim-linux64.tar.gz
+# NVIM_CONFIG_DIR=$HOME/.config/nvim
+# NVIM_LINK="https://github.com/neovim/neovim/releases/download/stable/nvim-linux64.tar.gz"
+# if [[ ! -f "$NVIM_DIR/bin/nvim" ]]; then
+#     echo "Installing Nvim"
+#     echo "Creating nvim directory under tools directory"
 
-    if [[ ! -d "$NVIM_DIR" ]]; then
-        mkdir -p "$NVIM_DIR"
-    fi
+#     if [[ ! -d "$NVIM_DIR" ]]; then
+#         mkdir -p "$NVIM_DIR"
+#     fi
 
-    if [[ ! -f $NVIM_SRC_NAME ]]; then
-        echo "Downloading Nvim"
-        wget "$NVIM_LINK" -O "$NVIM_SRC_NAME"
-    fi
-    echo "Extracting neovim"
-    tar zxvf "$NVIM_SRC_NAME" --strip-components 1 -C "$NVIM_DIR"
+#     if [[ ! -f $NVIM_SRC_NAME ]]; then
+#         echo "Downloading Nvim"
+#         wget "$NVIM_LINK" -O "$NVIM_SRC_NAME"
+#     fi
+#     echo "Extracting neovim"
+#     tar zxvf "$NVIM_SRC_NAME" --strip-components 1 -C "$NVIM_DIR"
 
-    if [[ "$ADD_TO_SYSTEM_PATH" = true ]] && [[ "$USE_BASH_SHELL" = true ]]; then
-        echo "export PATH=\"$NVIM_DIR/bin:\$PATH\"" >> "$HOME/.bash_profile"
-    fi
-else
-    echo "Nvim is already installed. Skip installing it."
-fi
+#     if [[ "$ADD_TO_SYSTEM_PATH" = true ]] && [[ "$USE_BASH_SHELL" = true ]]; then
+#         echo "export PATH=\"$NVIM_DIR/bin:\$PATH\"" >> "$HOME/.bash_profile"
+#     fi
+# else
+#     echo "Nvim is already installed. Skip installing it."
+# fi
 
-echo "Setting up config and installing plugins"
-if [[ -d "$NVIM_CONFIG_DIR" ]]; then
-    rm -rf "$NVIM_CONFIG_DIR.backup"
-    mv "$NVIM_CONFIG_DIR" "$NVIM_CONFIG_DIR.backup"
-fi
+# echo "Setting up config and installing plugins"
+# if [[ -d "$NVIM_CONFIG_DIR" ]]; then
+#     rm -rf "$NVIM_CONFIG_DIR.backup"
+#     mv "$NVIM_CONFIG_DIR" "$NVIM_CONFIG_DIR.backup"
+# fi
 
 git clone --depth=1 https://github.com/jdhao/nvim-config.git "$NVIM_CONFIG_DIR"
 
-echo "Installing packer.nvim"
-if [[ ! -d ~/.local/share/nvim/site/pack/packer/opt/packer.nvim ]]; then
-    git clone --depth=1 https://github.com/wbthomason/packer.nvim \
-        ~/.local/share/nvim/site/pack/packer/opt/packer.nvim
-fi
+# echo "Installing packer.nvim"
+# if [[ ! -d ~/.local/share/nvim/site/pack/packer/opt/packer.nvim ]]; then
+#     git clone --depth=1 https://github.com/wbthomason/packer.nvim \
+#         ~/.local/share/nvim/site/pack/packer/opt/packer.nvim
+# fi
 
 echo "Installing nvim plugins, please wait"
 "$NVIM_DIR/bin/nvim" -c "autocmd User PackerComplete quitall" -c "PackerSync"

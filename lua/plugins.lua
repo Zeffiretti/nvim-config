@@ -266,13 +266,13 @@ packer.startup {
     use { "godlygeek/tabular", cmd = { "Tabularize" } }
 
     -- Markdown previewing (only for Mac and Windows)
-    if vim.g.is_win or vim.g.is_mac then
+    -- if vim.g.is_win or vim.g.is_mac or vim.is_linux then
       use {
         "iamcco/markdown-preview.nvim",
         run = "cd app && npm install",
         ft = { "markdown" },
       }
-    end
+    -- end
 
     use { "folke/zen-mode.nvim", cmd = "ZenMode", config = [[require('config.zen-mode')]] }
 

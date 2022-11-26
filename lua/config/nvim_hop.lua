@@ -4,6 +4,7 @@ vim.cmd([[hi HopNextKey2 cterm=bold ctermfg=176 gui=bold guibg=#ff00ff guifg=#ff
 
 local keymap = vim.keymap
 local hop = require("hop")
+local directions = require('hop.hint').HintDirection
 hop.setup {
   case_insensitive = true,
   char2_fallback_key = "<CR>",
@@ -18,3 +19,22 @@ keymap.set({ "n", "v", "o" }, "f", "", {
   end,
   desc = "nvim-hop char2",
 })
+keymap.set({ "n", "v", "o" }, "m", "", {
+  silent = true,
+  noremap = true,
+  callback = function()
+    vim.cmd('.g/^$/normal )')
+    hop.hint_words({direction=directions.AFTER_CURSOR})
+  end,
+  desc = "nvim-hop words after cursor",
+})
+keymap.set({ "n", "v", "o" }, "b", "", {
+  silent = true,
+  noremap = true,
+  callback = function()
+    vim.cmd('.g/^$/normal )')
+    hop.hint_words({direction=directions.BEFORE_CURSOR})
+  end,
+  desc = "nvim-hop words before cursor",
+})
+
