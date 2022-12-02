@@ -121,5 +121,9 @@ augroup END
 
 autocmd BufWritePre FileType c <Esc><space>f<CR>
 " autocmd BufWritePre FileTyargcall() <Esc><space>f<CR>
+
+" oscyank
+autocmd TextYankPost * if v:event.operator is 'y' && v:event.regname is '' | execute 'OSCYankReg "' | endif
+
 " Load auto-command defined in Lua
 lua require("custom-autocmd")

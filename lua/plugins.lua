@@ -391,7 +391,7 @@ packer.startup {
     use { 'gcmt/wildfire.vim' }
 
     -- surround
-    use{
+    use {
         "kylechui/nvim-surround",
         tag = "*", -- Use for stability; omit to use `main` branch for the latest features
         config = function()
@@ -399,6 +399,12 @@ packer.startup {
                 -- Configuration here, or leave empty to use defaults
             })
         end
+    }
+
+    -- oscyank for remote using
+    use {
+      "ojroques/vim-oscyank",
+      branch="main",
     }
 
     -- ros-nvim
