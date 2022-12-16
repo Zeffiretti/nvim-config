@@ -34,6 +34,10 @@ local custom_attach = function(client, bufnr)
   -- Set some key bindings conditional on server capabilities
   if client.server_capabilities.documentFormattingProvider then
     map("n", "<space>f", vim.lsp.buf.format, { desc = "format code" })
+    vim.api.nvim_create_autocmd(
+      { "BufWritePre" },
+      { command = "silent! lua vim.lsp.buf.format()" }
+    )
   end
 
   api.nvim_create_autocmd("CursorHold", {
@@ -146,17 +150,17 @@ else
 end
 
 -- set up vim-language-server
-if utils.executable("vim-language-server") then
-  lspconfig.vimls.setup {
-    on_attach = custom_attach,
-    flags = {
-      debounce_text_changes = 500,
-    },
-    capabilities = capabilities,
-  }
-else
-  vim.notify("vim-language-server not found!", vim.log.levels.WARN, { title = "Nvim-config" })
-end
+-- if utils.executable("vim-language-server") then
+--   lspconfig.vimls.setup {
+--     on_attach = custom_attach,
+--     flags = {
+--       debounce_text_changes = 500,
+--     },
+--     capabilities = capabilities,
+--   }
+-- else
+--   vim.notify("vim-language-server not found!", vim.log.levels.WARN, { title = "Nvim-config" })
+-- end
 
 -- set up bash-language-server
 if utils.executable("bash-language-server") then
