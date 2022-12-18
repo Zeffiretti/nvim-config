@@ -10,21 +10,6 @@ snippet bare "barebone code template"
 #include <queue>
 #include <numeric>
 
-using std::cout;
-using std::endl;
-using std::vector;
-using std::string;
-using std::map;
-using std::unordered_map;
-using std::set;
-using std::unordered_set;
-using std::stack;
-using std::queue;
-using std::pair;
-using std::make_pair;
-
-
-
 int main()
 {
 
@@ -39,9 +24,8 @@ endsnippet
 
 snippet plist "print vector" w
 template <class T>
-void printList(const T& arr, const string& desc){
+void printList(const T& arr, const std::string& desc){
 	std::cout << desc << ": [";
-
 	for (auto it = arr.begin(); it != arr.end(); it++){
 		std::cout << *it << ((std::next(it) != arr.end()) ? ", " : "");
 	}
@@ -51,14 +35,14 @@ endsnippet
 
 snippet pmat "print list of list" w
 template <class T>
-void printMat(const vector<vector<T>>& mat, const string& desc){
-	cout << desc << ": " << endl;
+void printMat(const std::vector<std::vector<T>>& mat, const std::string& desc){
+	std::cout << desc << ": " << std::endl;
 
 	for (auto it1 = mat.begin(); it1 != mat.end(); it1++){
 		auto cur_vec = *it1;
-		cout << "[";
+		std::cout << "[";
 		for (auto it2 = cur_vec.begin(); it2 != cur_vec.end(); it2++){
-			cout << *it2 << ((std::next(it2) != cur_vec.end()) ? ", " : "]\n");
+			std::cout << *it2 << ((std::next(it2) != cur_vec.end()) ? ", " : "]\n");
 		}
 	}
 }
@@ -76,18 +60,18 @@ void printQueue(T q){
 endsnippet
 
 snippet cout "print a variable" w
-cout << "$1: " << $2 << endl;
+std::cout << "$1: " << $2 << std::endl;
 endsnippet
 
 snippet random "Generate a random list" b
 // Generate a random sequence of length len, in range(low, high) (inclusive).
 // need to #include<random>
-vector<int> genRandom(int low, int high, int len){
+std::vector<int> genRandom(int low, int high, int len){
 	std::random_device rd;
 	std::mt19937 gen(rd());
 	std::uniform_int_distribution<int> distribution(low, high);
 
-	vector<int> arr(len, 0);
+	std::vector<int> arr(len, 0);
 	for (int i = 0; i != len; ++i){
 		arr[i] = distribution(gen);
 	}
@@ -99,37 +83,31 @@ endsnippet
 snippet incset "Use set" b
 #include <set>
 
-using std::set;
 endsnippet
 
 snippet incmap "Use map" b
 #include <map>
 
-using std::map;
 endsnippet
 
 snippet incqueue "Use queue" b
 #include <queue>
 
-using std::queue;
 endsnippet
 
 snippet incstr "Use string" b
 #include <string>
 
-using std::string;
 endsnippet
 
 snippet incvec "Use vector" b
 #include <vector>
 
-using std::vector;
 endsnippet
 
 snippet incstack "Use stack" b
 #include <stack>
 
-using std::stack;
 endsnippet
 
 snippet vec "std::vector" w
@@ -137,32 +115,27 @@ vector<$1> ${2:vec}
 endsnippet
 
 snippet map "std::map" w
-map<$1, $2> ${3:mymap}
+std::map<$1, $2> ${3:mymap}
 endsnippet
 
 snippet umap "std::unordered_map"
-unordered_map<$1, $2> ${3:mymap}
+std::unordered_map<$1, $2> ${3:mymap}
 endsnippet
 
 snippet set "std::set" w
-set<$1> ${2:myset}
+std::set<$1> ${2:myset}
 endsnippet
 
 snippet uset "std::unordered_set" w
-unordered_set<$1> ${2:myset}
+std::unordered_set<$1> ${2:myset}
 endsnippet
 
 snippet queue "std::queue" w
-queue<$1> ${2:q}
+std::queue<$1> ${2:q}
 endsnippet
 
 snippet stack "std::stack" w
-stack<$1> ${2:mystack}
-endsnippet
-
-snippet sol "solution" w
-auto solution = Solution();
-$0
+std::stack<$1> ${2:mystack}
 endsnippet
 
 snippet for "for loop" w

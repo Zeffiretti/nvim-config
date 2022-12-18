@@ -38,6 +38,7 @@ endfunction
 " For delimitMate
 let b:delimitMate_matchpairs = "(:),[:],{:}"
 
+" Tencent cpp code standard
 " 输入设置
 set backspace=2
 set tabstop=2
@@ -117,8 +118,10 @@ function! CppLint(...)
         endif
     endif
     let l:old_makeprg = &makeprg
-    setlocal makeprg=cpplint.py
+    " use google cpplint instead of tencent script
+    setlocal makeprg=cpplint
     execute "make " . l:args
     let &makeprg=old_makeprg
 endfunction
 command! -complete=file -nargs=* CppLint call CppLint('<args>')
+nnoremap <F3> :call CppLint()<CR>

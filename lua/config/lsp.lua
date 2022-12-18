@@ -34,10 +34,11 @@ local custom_attach = function(client, bufnr)
   -- Set some key bindings conditional on server capabilities
   if client.server_capabilities.documentFormattingProvider then
     map("n", "<space>f", vim.lsp.buf.format, { desc = "format code" })
-    vim.api.nvim_create_autocmd(
-      { "BufWritePre" },
-      { command = "silent! lua vim.lsp.buf.format()" }
-    )
+    map("n", "<esc><esc>", vim.lsp.buf.format, { desc = "format code" })
+    -- vim.api.nvim_create_autocmd(
+    --   { "BufWritePost" },
+    --   { command = "silent! lua vim.lsp.buf.format()" }
+    -- )
   end
 
   api.nvim_create_autocmd("CursorHold", {

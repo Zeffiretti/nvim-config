@@ -34,6 +34,7 @@ local core_conf_files = {
   "plugins.vim", -- all the plugins installed and their configurations
   "colorschemes.lua", -- colorscheme settings
   "other.vim", -- other custom settings, which will ovewrite those set int above files
+  "headerguard.vim",
 }
 
 -- source all the core config files

@@ -119,7 +119,7 @@ augroup LargeFile
   autocmd BufReadPre * call s:handle_large_file()
 augroup END
 
-autocmd BufWritePre FileType c <Esc><space>f<CR>
+" autocmd BufWritePre FileType c <Esc><space>f<CR>
 " autocmd BufWritePre FileTyargcall() <Esc><space>f<CR>
 
 " oscyank
