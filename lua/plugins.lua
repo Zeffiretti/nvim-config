@@ -334,9 +334,9 @@ packer.startup {
     -- Session management plugin
     use { "tpope/vim-obsession", cmd = "Obsession" }
 
-    if vim.g.is_linux then
+    -- if vim.g.is_linux then
       use { "ojroques/vim-oscyank", cmd = { "OSCYank", "OSCYankReg" } }
-    end
+    -- end
 
     -- The missing auto-completion for cmdline!
     use { "gelguy/wilder.nvim", opt = true, setup = [[vim.cmd('packadd wilder.nvim')]] }
@@ -358,9 +358,21 @@ packer.startup {
     -- file explorer
     use {
       "kyazdani42/nvim-tree.lua",
-      after = "copilot.lua",
+      -- after = "copilot.lua",
       requires = { "kyazdani42/nvim-web-devicons" },
       config = [[require('config.nvim-tree')]],
+    }
+
+    use {
+      "ahmedkhalf/project.nvim",
+      -- after = "telescope.nvim",
+      config = [[require('config.project')]],
+      -- event = "VimEnter",
+      -- config = function()
+      --   require("project_nvim").setup {
+      --     -- configuration
+      --   }
+      -- end
     }
 
     use { "ii14/emmylua-nvim", ft = "lua" }
@@ -372,17 +384,17 @@ packer.startup {
 
     -- github copilot
     -- use { "github/copilot.vim", branch = 'release' }
-    use {
-      "zbirenbaum/copilot.lua",
-      -- after = "lualine.nvim",
-      -- event = "VimEnter",
-      config = [[require('config.copilot')]],
-    }
-    use {
-      "zbirenbaum/copilot-cmp",
-      after = "copilot.lua",
-      config = [[require('config.copilot-cmp')]]
-    }
+    -- use {
+    --   "zbirenbaum/copilot.lua",
+    --   -- after = "lualine.nvim",
+    --   -- event = "VimEnter",
+    --   config = [[require('config.copilot')]],
+    -- }
+    -- use {
+    --   "zbirenbaum/copilot-cmp",
+    --   after = "copilot.lua",
+    --   config = [[require('config.copilot-cmp')]]
+    -- }
 
     -- floaterm
     use { 'voldikss/vim-floaterm' }
@@ -402,10 +414,10 @@ packer.startup {
     }
 
     -- oscyank for remote using
-    use {
-      "ojroques/vim-oscyank",
-      branch="main",
-    }
+    -- use {
+    --   "ojroques/vim-oscyank",
+    --   branch="main",
+    -- }
 
     -- use { "tibabit/vim-templates" }
 
