@@ -224,7 +224,7 @@ keymap.set("c", "<C-A>", "<HOME>")
 
 -- Delete the character to the right of the cursor
 keymap.set("i", "<C-D>", "<DEL>")
-keymap.set("n", "<leader>mf", "<space>mf")
+keymap.set("n", "<leader>m", "<space>mf")
 
 keymap.set("n", "<leader>cb", function()
   local cnt = 0
@@ -263,4 +263,4 @@ keymap.set("n", "<Esc>", ":w<CR><Esc>")
 
 -- project nvim uses F4 and F5 to pop up telescope window
 keymap.set("n", "<F4>", ":ProjectRoot<CR>")
-keymap.set("n", "<F5>", ":Telescope projects<CR>")
+keymap.set("n", "<leader>m", ":Telescope projects<CR>")

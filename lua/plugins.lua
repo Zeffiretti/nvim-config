@@ -365,7 +365,7 @@ packer.startup {
 
     use {
       "ahmedkhalf/project.nvim",
-      -- after = "telescope.nvim",
+      after = "telescope.nvim",
       config = [[require('config.project')]],
       -- event = "VimEnter",
       -- config = function()
@@ -397,7 +397,27 @@ packer.startup {
     -- }
 
     -- floaterm
-    use { 'voldikss/vim-floaterm' }
+    -- if vim.g.is_win then
+    --   use { 'voldikss/vim-floaterm',
+    --   -- config = function()
+    --   --       require('vim-floaterm').setup({
+    --   --         -- vim.g.floaterm_shell = "pwsh",
+    --   --       })
+    --   --   end
+    --   }
+    --   -- vim.g.floaterm_shell = "pwsh"
+    -- else
+      use { 'voldikss/vim-floaterm' }
+    -- end
+    -- use { 'voldikss/vim-floaterm',
+    --       -- config = function()
+    --       --   require('vim-floaterm').setup({
+    --       --     if vim.g.is_win then
+    --       --       vim.g.floaterm_shell="pwsh"
+    --       --     end
+    --       --   })
+    --       --   end
+    --       }
 
     -- wildfire
     use { 'gcmt/wildfire.vim' }

@@ -273,6 +273,8 @@ if ( g:is_win || g:is_mac ) && executable('latex')
         \ 'mode' : 2,
         \ }
 
+  let maplocalleader = ","
+
   " Viewer settings for different platforms
   if g:is_win
     let g:vimtex_view_general_viewer = 'SumatraPDF'
@@ -418,3 +420,5 @@ endfunction
 
 """"""""""""""""""""""""""""""vim-auto-save settings""""""""""""""""""""""""""""""
 let g:auto_save = 1  " enable AutoSave on Vim startup
+
+""""""""""""""""""""""""""""""floaterm shell settings""""""""""""""""""""""""""""""

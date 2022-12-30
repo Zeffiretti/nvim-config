@@ -20,11 +20,11 @@ local utils = require("utils")
 local expected_ver = "0.9.0"
 local nvim_ver = utils.get_nvim_version()
 
-if nvim_ver ~= expected_ver then
-  local msg = string.format("Unsupported nvim version: expect %s, but got %s instead!", expected_ver, nvim_ver)
-  api.nvim_err_writeln(msg)
-  return
-end
+-- if nvim_ver ~= expected_ver then
+--   local msg = string.format("Unsupported nvim version: expect %s, but got %s instead!", expected_ver, nvim_ver)
+--   api.nvim_err_writeln(msg)
+--   return
+-- end
 
 local core_conf_files = {
   "globals.lua", -- some global settings

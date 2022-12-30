@@ -73,3 +73,7 @@ vim.g.loaded_matchparen = 1
 
 -- Disable sql omni completion, it is broken.
 vim.g.loaded_sql_completion = 1
+
+if vim.g.is_win then
+  vim.g.floaterm_shell = "pwsh"
+end

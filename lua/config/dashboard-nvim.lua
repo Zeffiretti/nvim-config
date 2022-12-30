@@ -15,10 +15,20 @@ dashboard.custom_header = {
   "                                                       ",
   "                                                       ",
   "                                                       ",
-  "                                                       ",
+  -- "       _   _      _ _ _              __  ___           ",
+  -- "      | | | | ___| | (_) ___  _ __   \ \/ (_) ___      ",
+  -- "      | |_| |/ _ \ | | |/ _ \| '_ \   \  /| |/ _ \     ",
+  -- "      |  _  |  __/ | | | (_) | | | |  /  \| |  __/     ",
+  -- "      |_| |_|\___|_|_|_|\___/|_| |_| /_/\_\_|\___|     ",
 }
 
 dashboard.custom_center = {
+  {
+    icon = "  ",
+    desc = "Recent Projects                         ",
+    action = "Telescope projects",
+    shortcut = "<Leader> m  ",
+  },
   {
     icon = "  ",
     desc = "Find  File                              ",
