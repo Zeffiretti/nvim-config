@@ -127,6 +127,13 @@ packer.startup {
     -- search emoji and other symbols
     use { "nvim-telescope/telescope-symbols.nvim", after = "telescope.nvim" }
 
+    -- image viewer
+    use {
+      "nvim-telescope/telescope-media-files.nvim",
+      after = "telescope.nvim",
+      config = [[require('config.media')]],
+    }
+
     -- A list of colorscheme plugin you may want to try. Find what suits you.
     use { "lifepillar/vim-gruvbox8", opt = true }
     use { "navarasu/onedark.nvim", opt = true }
