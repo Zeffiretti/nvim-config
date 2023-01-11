@@ -125,5 +125,20 @@ augroup END
 " oscyank
 autocmd TextYankPost * if v:event.operator is 'y' && v:event.regname is '' | execute 'OSCYankReg "' | endif
 
+" 大括号自动分行, C/C++下的自动命令, 添加到 .vimrc
+autocmd BufWritePre,BufRead *.c :inoremap <Enter> <c-r>=BracketsEnter('}')<CR>
+autocmd BufWritePre,BufRead *.cpp :inoremap <Enter> <c-r>=BracketsEnter('}')<CR>
+autocmd BufWritePre,BufRead *.cc :inoremap <Enter> <c-r>=BracketsEnter('}')<CR>
+autocmd BufWritePre,BufRead *.h :inoremap <Enter> <c-r>=BracketsEnter('}')<CR>
+
+function BracketsEnter(char)
+    if getline('.')[col('.')-1] == a:char
+        return "\<Enter>\<Tab>\<Esc>mpa\<Enter>\<Esc>`pa" 
+    else
+        return "\<Enter>"
+    endif
+endf
+
 " Load auto-command defined in Lua
 lua require("custom-autocmd")
+

@@ -264,3 +264,11 @@ keymap.set("n", "<Esc>", ":w<CR><Esc>")
 -- project nvim uses F4 and F5 to pop up telescope window
 keymap.set("n", "<F4>", ":ProjectRoot<CR>")
 keymap.set("n", "<leader>m", ":Telescope projects<CR>")
+
+-- use ctrl-hjkl to move cursor in insert mode
+
+-- use ctrl-hjkl to move cursor in insert mode
+keymap.set("i", "<C-h>", "<Left>")
+keymap.set("i", "<C-j>", "<Down>")
+keymap.set("i", "<C-k>", "<Up>")
+keymap.set("i", "<C-l>", "<Right>")
