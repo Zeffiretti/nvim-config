@@ -301,7 +301,7 @@ packer.startup {
     use { "michaeljsmith/vim-indent-object", event = "VimEnter" }
 
     -- Only use these plugin on Windows and Mac and when LaTeX is installed
-    if vim.g.is_win or vim.g.is_mac and utils.executable("latex") then
+    if vim.g.is_win or vim.g.is_mac or vim.g.is_linux and utils.executable("latex") then
       use { "lervag/vimtex", ft = { "tex" } }
     end
 

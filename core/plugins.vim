@@ -243,7 +243,7 @@ nmap s <Nop>
 omap s <Nop>
 
 """"""""""""""""""""""""""""vimtex settings"""""""""""""""""""""""""""""
-if ( g:is_win || g:is_mac ) && executable('latex')
+if ( g:is_win || g:is_mac || g:is_linux ) && executable('latex')
   " Hacks for inverse search to work semi-automatically,
   " see https://jdhao.github.io/2021/02/20/inverse_search_setup_neovim_vimtex/.
   function! s:write_server_name() abort
@@ -303,6 +303,17 @@ if ( g:is_win || g:is_mac ) && executable('latex')
 
       call jobstart(l:cmd + [line('.'), l:out, l:src_file_path])
     endfunction
+  endif
+
+  if g:is_linux
+    let g:vimtex_view_method = "mupdf"
+    let g:vimtex_view_general_viewer = "mupdf"
+    " let g:vimtex_view_general_viewer = 'sumatrapdf'
+    " let g:vimtex_view_general_options = '-reuse-instance -forward-search @tex @line @pdf'
+    " let g:vimtex_view_method = "zathura"
+    " let g:vimtex_compiler_progname = "nvr"
+    " let g:vimtex_view_general_viewer = 'okular'
+    " let g:vimtex_view_general_options = '--unique file:@pdf\#src:@line@tex'
   endif
 endif
 
