@@ -422,7 +422,7 @@ endfunction
 let g:auto_save = 1  " enable AutoSave on Vim startup
 
 """"""""""""""""""""""""""""""floaterm shell settings""""""""""""""""""""""""""""""
-let g:floaterm_title = "Console"
-let g:floaterm_wintype = "split"
-let g:floaterm_height = 0.3
-let g:floaterm_position = "botright"
+" let g:floaterm_title = "Console"
+" let g:floaterm_wintype = "split"
+" let g:floaterm_height = 0.3
+" let g:floaterm_position = "botright"

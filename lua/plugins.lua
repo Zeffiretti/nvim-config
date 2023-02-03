@@ -128,11 +128,11 @@ packer.startup {
     use { "nvim-telescope/telescope-symbols.nvim", after = "telescope.nvim" }
 
     -- image viewer
-    use {
-      "nvim-telescope/telescope-media-files.nvim",
-      after = "telescope.nvim",
-      config = [[require('config.media')]],
-    }
+    -- use {
+    --   "nvim-telescope/telescope-media-files.nvim",
+    --   after = "telescope.nvim",
+    --   config = [[require('config.media')]],
+    -- }
 
     -- A list of colorscheme plugin you may want to try. Find what suits you.
     use { "lifepillar/vim-gruvbox8", opt = true }
@@ -146,6 +146,7 @@ packer.startup {
     use { "EdenEast/nightfox.nvim", opt = true }
     use { "rebelot/kanagawa.nvim", opt = true }
     use { "catppuccin/nvim", as = "catppuccin", opt = true }
+    use { "Mofiqul/vscode.nvim", opt = true }
 
     use { "kyazdani42/nvim-web-devicons", event = "VimEnter" }
 

@@ -18,6 +18,7 @@ M.colorscheme2dir = {
   -- nightfox = "nightfox.nvim",
   kanagawa = "kanagawa.nvim",
   -- catppuccin = "catppuccin",
+  vscode = "vscode.nvim",
 }
 
 M.gruvbox8 = function()
@@ -88,10 +89,18 @@ M.catppuccin = function()
   vim.cmd([[colorscheme catppuccin]])
 end
 
+M.vscode = function()
+  vim.g.vscode_enable_transparent = true
+
+  vim.cmd([[colorscheme vscode]])
+end
+
 --- Use a random colorscheme from the pre-defined list of colorschemes.
 M.rand_colorscheme = function()
   local colorscheme = utils.rand_element(vim.tbl_keys(M.colorscheme2dir))
-  -- local colorscheme = "doom_one"
+  if vim.g.vscode then
+    local colorscheme = "vscode"
+  end
 
   if not vim.tbl_contains(vim.tbl_keys(M), colorscheme) then
     local msg = "Invalid colorscheme: " .. colorscheme
