@@ -98,9 +98,9 @@ end
 --- Use a random colorscheme from the pre-defined list of colorschemes.
 M.rand_colorscheme = function()
   local colorscheme = utils.rand_element(vim.tbl_keys(M.colorscheme2dir))
-  if vim.g.vscode then
-    local colorscheme = "vscode"
-  end
+  -- if vim.g.vscode then
+  --   local colorscheme = "vscode"
+  -- end
 
   if not vim.tbl_contains(vim.tbl_keys(M), colorscheme) then
     local msg = "Invalid colorscheme: " .. colorscheme
@@ -130,4 +130,6 @@ M.rand_colorscheme = function()
 end
 
 -- Load a random colorscheme
-M.rand_colorscheme()
+-- if not vim.g.vscode then
+  M.rand_colorscheme()
+-- end

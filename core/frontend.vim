@@ -27,11 +27,13 @@ endif
 
 if exists("g:vscode")
   nnoremap gr :call VSCodeCall("editor.action.referenceSearch.trigger")<CR>
-  nnoremap j :call VSCodeCall("cursorDown")<CR>
-  nnoremap k :call VSCodeCall("cursorUp")<CR>
+  " nnoremap j :call VSCodeCall("cursorDown")<CR>
+  " nnoremap k :call VSCodeCall("cursorUp")<CR>
   nnoremap <ctrl-,> :call VSCodeCall("workbench.action.openSettings")<CR>
   nnoremap <ctrl-o> :call VSCodeCall("workbench.action.files.openFile")<CR>
   nnoremap <alt-c> :Commentary<CR>
   nnoremap <leader>sv :call VSCodeCall("workbench.action.selectTheme")<CR>
-  " nnoremap <alt-/> :call VSCodeCall("editor.action.commentLine")<CR>
+  " xmap <C-/> <Plug>VSCodeCommentarygv
+  " nmap <C-/> <Plug>VSCodeCommentaryLinegv
+  " nnoremap <alt-/> :call VSCodeCall("e)gvditor.action.commentLine")<CR>
 endif
