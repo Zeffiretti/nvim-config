@@ -18,7 +18,7 @@ M.colorscheme2dir = {
   -- nightfox = "nightfox.nvim",
   kanagawa = "kanagawa.nvim",
   -- catppuccin = "catppuccin",
-  vscode = "vscode.nvim",
+  -- vscode = "vscode.nvim",
 }
 
 M.gruvbox8 = function()
