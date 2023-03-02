@@ -367,6 +367,7 @@ packer.startup {
     use {
       "kyazdani42/nvim-tree.lua",
       -- after = "copilot.lua",
+      commit = "3ce0a8e770f70a135ef969e0a640bd8d05baf42c",
       requires = { "kyazdani42/nvim-web-devicons" },
       config = [[require('config.nvim-tree')]],
     }
