@@ -33,6 +33,8 @@ if exists("g:vscode")
   nnoremap <ctrl-o> :call VSCodeCall("workbench.action.files.openFile")<CR>
   nnoremap <alt-c> :Commentary<CR>
   nnoremap <leader>sv :call VSCodeCall("workbench.action.selectTheme")<CR>
+  nnoremap q :call VSCodeCall("workbench.action.files.save")<CR>
+  set syntax=off
   " xmap <C-/> <Plug>VSCodeCommentarygv
   " nmap <C-/> <Plug>VSCodeCommentaryLinegv
   " nnoremap <alt-/> :call VSCodeCall("e)gvditor.action.commentLine")<CR>
