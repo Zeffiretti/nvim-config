@@ -256,6 +256,9 @@ keymap.set("v", "<A-z>", "<Esc>:FloatermToggle!<CR>")
 keymap.set("n", "<C-_>", ":Commentary<CR>")
 keymap.set("v", "<C-_>", ":Commentary<CR>")
 keymap.set("i", "<C-_>", "<Esc>:Commentary<CR><Esc>i")
+keymap.set("n", "<C-/>", ":Commentary<CR>")
+keymap.set("v", "<C-/>", ":Commentary<CR>")
+keymap.set("i", "<C-/>", "<Esc>:Commentary<CR><Esc>i")
 
 keymap.set("n", "q", ":qall<CR>")
 

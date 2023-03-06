@@ -12,14 +12,19 @@ M.colorscheme2dir = {
   -- edge = "edge",
   -- sonokai = "sonokai",
   -- gruvbox_material = "gruvbox-material",
-  nord = "nord.nvim",
-  doom_one = "doom-one.nvim",
+  -- nord = "nord.nvim",
+  -- doom_one = "doom-one.nvim",
+  darkplus = "darkplus.nvim",
   -- everforest = "everforest",
   -- nightfox = "nightfox.nvim",
-  kanagawa = "kanagawa.nvim",
+  -- kanagawa = "kanagawa.nvim",
   -- catppuccin = "catppuccin",
   -- vscode = "vscode.nvim",
 }
+
+M.darkplus = function()
+  vim.cmd([[colorscheme darkplus]])
+end
 
 M.gruvbox8 = function()
   -- Italic options should be put before colorscheme setting,

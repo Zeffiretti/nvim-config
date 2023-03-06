@@ -51,23 +51,76 @@ packer.startup {
 
     use { "onsails/lspkind-nvim",
       -- after = "copilot.lua",
+      cond = function()
+        return vim.g.vscode == nil
+      end,
       event = "VimEnter"
     }
     -- auto-completion engine
-    use { "hrsh7th/nvim-cmp", after = "lspkind-nvim", config = [[require('config.nvim-cmp')]] }
+    use {
+      "hrsh7th/nvim-cmp",
+      after = "lspkind-nvim",
+      config = [[require('config.nvim-cmp')]],
+      cond = function()
+        return vim.g.vscode == nil
+      end,
+    }
 
     -- nvim-cmp completion sources
-    use { "hrsh7th/cmp-nvim-lsp", after = "nvim-cmp" }
-    use { "hrsh7th/cmp-path", after = "nvim-cmp" }
-    use { "hrsh7th/cmp-buffer", after = "nvim-cmp" }
-    use { "hrsh7th/cmp-omni", after = "nvim-cmp" }
-    use { "quangnguyen30192/cmp-nvim-ultisnips", after = { "nvim-cmp", "ultisnips" } }
+    use {
+      "hrsh7th/cmp-nvim-lsp",
+      cond = function()
+        return vim.g.vscode == nil
+      end,
+      after = "nvim-cmp"
+    }
+    use {
+      "hrsh7th/cmp-path",
+      cond = function()
+        return vim.g.vscode == nil
+      end,
+      after = "nvim-cmp"
+    }
+    use {
+      "hrsh7th/cmp-buffer",
+      cond = function()
+        return vim.g.vscode == nil
+      end,
+      after = "nvim-cmp"
+    }
+    use {
+      "hrsh7th/cmp-omni",
+      cond = function()
+        return vim.g.vscode == nil
+      end,
+      after = "nvim-cmp"
+    }
+    use {
+      "quangnguyen30192/cmp-nvim-ultisnips",
+      cond = function()
+        return vim.g.vscode == nil
+      end,
+      after = { "nvim-cmp", "ultisnips" }
+    }
     if vim.g.is_mac then
-      use { "hrsh7th/cmp-emoji", after = "nvim-cmp" }
+      use {
+        "hrsh7th/cmp-emoji",
+        cond = function()
+          return vim.g.vscode == nil
+        end,
+        after = "nvim-cmp"
+      }
     end
 
     -- nvim-lsp configuration (it relies on cmp-nvim-lsp, so it should be loaded after cmp-nvim-lsp).
-    use { "neovim/nvim-lspconfig", after = "cmp-nvim-lsp", config = [[require('config.lsp')]] }
+    use {
+      "neovim/nvim-lspconfig",
+      after = "cmp-nvim-lsp",
+      cond = function()
+        return vim.g.vscode == nil
+      end,
+      config = [[require('config.lsp')]]
+    }
 
     if vim.g.is_mac or vim.g.is_linux  then
       use {
@@ -76,14 +129,29 @@ packer.startup {
         event = "BufEnter",
         run = ":TSUpdate",
         config = [[require('config.treesitter')]],
+        cond = function()
+          return vim.g.vscode == nil
+        end,
       }
     end
 
     -- Python indent (follows the PEP8 style)
-    use { "Vimjas/vim-python-pep8-indent", ft = { "python" } }
+    use {
+      "Vimjas/vim-python-pep8-indent",
+      cond = function()
+        return vim.g.vscode == nil
+      end,
+      ft = { "python" }
+    }
 
     -- Python-related text object
-    use { "jeetsukumaran/vim-pythonsense", ft = { "python" } }
+    use {
+      "jeetsukumaran/vim-pythonsense",
+      cond = function()
+        return vim.g.vscode == nil
+      end,
+      ft = { "python" }
+    }
 
     use { "machakann/vim-swap", event = "VimEnter" }
 
@@ -108,6 +176,9 @@ packer.startup {
     use {
       "kevinhwang91/nvim-hlslens",
       branch = "main",
+      cond = function()
+        return vim.g.vscode == nil
+      end,
       keys = { { "n", "*" }, { "n", "#" }, { "n", "n" }, { "n", "N" } },
       config = [[require('config.hlslens')]],
     }
@@ -123,9 +194,18 @@ packer.startup {
       "nvim-telescope/telescope.nvim",
       cmd = "Telescope",
       requires = { { "nvim-lua/plenary.nvim" } },
+      cond = function()
+        return vim.g.vscode == nil
+      end,
     }
     -- search emoji and other symbols
-    use { "nvim-telescope/telescope-symbols.nvim", after = "telescope.nvim" }
+    use {
+      "nvim-telescope/telescope-symbols.nvim",
+      after = "telescope.nvim",
+      cond = function()
+        return vim.g.vscode == nil
+      end,
+    }
 
     -- image viewer
     -- use {
@@ -147,11 +227,15 @@ packer.startup {
     use { "rebelot/kanagawa.nvim", opt = true }
     use { "catppuccin/nvim", as = "catppuccin", opt = true }
     use { "Mofiqul/vscode.nvim", opt = true }
+    use { "martinsione/darkplus.nvim", opt = true }
 
     use { "kyazdani42/nvim-web-devicons", event = "VimEnter" }
 
     use {
       "nvim-lualine/lualine.nvim",
+      cond = function()
+        return vim.g.vscode == nil
+      end,
       event = "VimEnter",
       cond = firenvim_not_active,
       config = [[require('config.statusline')]],
@@ -167,19 +251,36 @@ packer.startup {
       config = [[require('config.dashboard-nvim')]]
     }
 
-    use {
-      "lukas-reineke/indent-blankline.nvim",
-      event = "VimEnter",
-      config = [[require('config.indent-blankline')]],
-    }
+    -- if not vim.g.vscode then
+      use {
+        "lukas-reineke/indent-blankline.nvim",
+        cond = function()
+          return vim.g.vscode == nil
+        end,
+        event = "VimEnter",
+        config = [[require('config.indent-blankline')]],
+      }
+    -- end
 
     -- Highlight URLs inside vim
-    use { "itchyny/vim-highlighturl", event = "VimEnter" }
+    use {
+      "itchyny/vim-highlighturl",
+      cond = function()
+        return vim.g.vscode == nil
+      end,
+      event = "VimEnter"
+    }
 
     -- notification plugin
     use {
       "rcarriga/nvim-notify",
+      cond = function()
+        return vim.g.vscode == nil
+      end,
       event = "BufEnter",
+        cond = function()
+          return vim.g.vscode == nil
+        end,
       config = function()
         vim.defer_fn(function()
           require("config.nvim-notify")
@@ -191,21 +292,51 @@ packer.startup {
     -- not be possible since we maybe in a server which disables GUI.
     if vim.g.is_win or vim.g.is_mac then
       -- open URL in browser
-      use { "tyru/open-browser.vim", event = "VimEnter" }
+      use {
+        "tyru/open-browser.vim",
+        event = "VimEnter",
+        cond = function()
+          return vim.g.vscode == nil
+        end,
+      }
     end
 
     -- Only install these plugins if ctags are installed on the system
     if utils.executable("ctags") then
       -- show file tags in vim window
-      use { "liuchengxu/vista.vim", cmd = "Vista" }
+      use {
+        "liuchengxu/vista.vim",
+        cond = function()
+          return vim.g.vscode == nil
+        end,
+        cmd = "Vista"
+      }
     end
 
     -- Snippet engine and snippet template
-    use { "SirVer/ultisnips", event = "InsertEnter" }
-    use { "honza/vim-snippets", after = "ultisnips" }
+    use {
+      "SirVer/ultisnips",
+      cond = function()
+        return vim.g.vscode == nil
+      end,
+      event = "InsertEnter"
+    }
+    use {
+      "honza/vim-snippets",
+      cond = function()
+        return vim.g.vscode == nil
+      end,
+      after = "ultisnips"
+    }
 
     -- Automatic insertion and deletion of a pair of characters
-    use { "Raimondi/delimitMate", event = "InsertEnter" }
+    use {
+      "Raimondi/delimitMate",
+      cond = function()
+        return vim.g.vscode == nil
+      end,
+      event = "InsertEnter"
+    }
 
     -- Comment plugin
     use { "tpope/vim-commentary", event = "VimEnter" }
@@ -214,10 +345,22 @@ packer.startup {
     -- use 'mg979/vim-visual-multi'
 
     -- Autosave files on certain events
-    use { "907th/vim-auto-save", event = "InsertEnter" }
+    use {
+      "907th/vim-auto-save",
+      cond = function()
+        return vim.g.vscode == nil
+      end,
+      event = "InsertEnter"
+    }
 
     -- Show undo history visually
-    use { "simnalamburt/vim-mundo", cmd = { "MundoToggle", "MundoShow" } }
+    use {
+      "simnalamburt/vim-mundo",
+      cond = function()
+        return vim.g.vscode == nil
+      end,
+      cmd = { "MundoToggle", "MundoShow" }
+    }
 
     -- Manage your yank history
     if vim.g.is_win or vim.g.is_mac then
@@ -242,36 +385,87 @@ packer.startup {
     use { "sbdchd/neoformat", cmd = { "Neoformat" } }
 
     -- Git command inside vim
-    use { "tpope/vim-fugitive", event = "User InGitRepo", config = [[require('config.fugitive')]] }
+    use {
+      "tpope/vim-fugitive",
+      cond = function()
+        return vim.g.vscode == nil
+      end,
+      event = "User InGitRepo",
+      config = [[require('config.fugitive')]]
+    }
 
     -- Better git log display
-    use { "rbong/vim-flog", requires = "tpope/vim-fugitive", cmd = { "Flog" } }
+    use {
+      "rbong/vim-flog",
+      cond = function()
+        return vim.g.vscode == nil
+      end,
+      requires = "tpope/vim-fugitive",
+      cmd = { "Flog" }
+    }
 
-    use { "christoomey/vim-conflicted", requires = "tpope/vim-fugitive", cmd = { "Conflicted" } }
+    use {
+      "christoomey/vim-conflicted",
+      cond = function()
+        return vim.g.vscode == nil
+      end,
+      requires = "tpope/vim-fugitive",
+      cmd = { "Conflicted" }
+    }
 
     use {
       "ruifm/gitlinker.nvim",
+      cond = function()
+        return vim.g.vscode == nil
+      end,
       requires = "nvim-lua/plenary.nvim",
       event = "User InGitRepo",
       config = [[require('config.git-linker')]],
     }
 
     -- Show git change (change, delete, add) signs in vim sign column
-    use { "lewis6991/gitsigns.nvim", config = [[require('config.gitsigns')]] }
+    use {
+      "lewis6991/gitsigns.nvim",
+      cond = function()
+        return vim.g.vscode == nil
+      end,
+      config = [[require('config.gitsigns')]]
+    }
 
     -- Better git commit experience
-    use { "rhysd/committia.vim", opt = true, setup = [[vim.cmd('packadd committia.vim')]] }
+    use {
+      "rhysd/committia.vim",
+      cond = function()
+        return vim.g.vscode == nil
+      end,
+      opt = true, setup = [[vim.cmd('packadd committia.vim')]]
+    }
 
     use { "kevinhwang91/nvim-bqf", ft = "qf", config = [[require('config.bqf')]] }
 
     -- Another markdown plugin
-    use { "preservim/vim-markdown", ft = { "markdown" } }
+    use {
+      "preservim/vim-markdown",
+      cond = function()
+        return vim.g.vscode == nil
+      end,
+      ft = { "markdown" }
+    }
 
     -- Faster footnote generation
-    use { "vim-pandoc/vim-markdownfootnotes", ft = { "markdown" } }
+    use {
+      "vim-pandoc/vim-markdownfootnotes",
+      cond = function()
+        return vim.g.vscode == nil
+      end,
+      ft = { "markdown" }
+    }
 
     -- Vim tabular plugin for manipulate tabular, required by markdown plugins
-    use { "godlygeek/tabular", cmd = { "Tabularize" } }
+    use {
+      "godlygeek/tabular",
+      cmd = { "Tabularize" }
+    }
 
     -- Markdown previewing (only for Mac and Windows)
     -- if vim.g.is_win or vim.g.is_mac or vim.is_linux then
@@ -298,7 +492,13 @@ packer.startup {
     use { "machakann/vim-sandwich", event = "VimEnter" }
 
     -- Add indent object for vim (useful for languages like Python)
-    use { "michaeljsmith/vim-indent-object", event = "VimEnter" }
+    use {
+      "michaeljsmith/vim-indent-object",
+      event = "VimEnter",
+      cond = function()
+        return vim.g.vscode == nil
+      end,
+    }
 
     -- Only use these plugin on Windows and Mac and when LaTeX is installed
     if vim.g.is_win or vim.g.is_mac or vim.g.is_linux and utils.executable("latex") then
@@ -367,6 +567,9 @@ packer.startup {
     use {
       "kyazdani42/nvim-tree.lua",
       -- after = "copilot.lua",
+      cond = function()
+        return vim.g.vscode == nil
+      end,
       commit = "3ce0a8e770f70a135ef969e0a640bd8d05baf42c",
       requires = { "kyazdani42/nvim-web-devicons" },
       config = [[require('config.nvim-tree')]],
@@ -386,7 +589,14 @@ packer.startup {
 
     use { "ii14/emmylua-nvim", ft = "lua" }
 
-    use { "j-hui/fidget.nvim", after = "nvim-lspconfig", config = [[require('config.fidget-nvim')]] }
+    use {
+      "j-hui/fidget.nvim",
+      after = "nvim-lspconfig",
+      config = [[require('config.fidget-nvim')]],
+      cond = function()
+        return vim.g.vscode == nil
+      end,
+    }
 
     -- wakatime to record coding time
     use { "wakatime/vim-wakatime" }
