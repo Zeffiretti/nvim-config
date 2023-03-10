@@ -7,19 +7,19 @@ local M = {}
 -- Colorscheme to its directory name mapping, because colorscheme repo name is not necessarily
 -- the same as the colorscheme name itself.
 M.colorscheme2dir = {
-  -- gruvbox8 = "vim-gruvbox8",
-  -- onedark = "onedark.nvim",
-  -- edge = "edge",
-  -- sonokai = "sonokai",
-  -- gruvbox_material = "gruvbox-material",
-  -- nord = "nord.nvim",
-  -- doom_one = "doom-one.nvim",
+  gruvbox8 = "vim-gruvbox8",
+  onedark = "onedark.nvim",
+  edge = "edge",
+  sonokai = "sonokai",
+  gruvbox_material = "gruvbox-material",
+  nord = "nord.nvim",
+  doom_one = "doom-one.nvim",
   darkplus = "darkplus.nvim",
-  -- everforest = "everforest",
-  -- nightfox = "nightfox.nvim",
-  -- kanagawa = "kanagawa.nvim",
-  -- catppuccin = "catppuccin",
-  -- vscode = "vscode.nvim",
+  everforest = "everforest",
+  nightfox = "nightfox.nvim",
+  kanagawa = "kanagawa.nvim",
+  catppuccin = "catppuccin",
+  vscode = "vscode.nvim",
 }
 
 M.darkplus = function()
@@ -103,9 +103,11 @@ end
 --- Use a random colorscheme from the pre-defined list of colorschemes.
 M.rand_colorscheme = function()
   local colorscheme = utils.rand_element(vim.tbl_keys(M.colorscheme2dir))
-  -- if vim.g.vscode then
-  --   local colorscheme = "vscode"
-  -- end
+  if vim.g.vscode then
+    colorscheme = "darkplus"
+  else
+    colorscheme = "doom_one"
+  end
 
   if not vim.tbl_contains(vim.tbl_keys(M), colorscheme) then
     local msg = "Invalid colorscheme: " .. colorscheme

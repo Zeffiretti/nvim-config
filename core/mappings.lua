@@ -251,6 +251,8 @@ keymap.set("t", "<A-z>", "<C-\\><C-n>:FloatermToggle<CR>")
 keymap.set("c", "<A-z>", "<Esc>:FloatermToggle!<CR>")
 keymap.set("i", "<A-z>", "<Esc><C-\\><C-n>:FloatermToggle!<CR>")
 keymap.set("v", "<A-z>", "<Esc>:FloatermToggle!<CR>")
+keymap.set("n", "<M-z>", ":FloatermToggle!<CR>")
+keymap.set("t", "<A-z>", "<C-\\><C-n>:FloatermToggle<CR>")
 
 -- use ctrl-/ to toggle comment
 keymap.set("n", "<C-_>", ":Commentary<CR>")

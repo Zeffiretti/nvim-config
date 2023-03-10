@@ -158,7 +158,13 @@ packer.startup {
     -- IDE for Lisp
     if utils.executable("sbcl") then
       -- use 'kovisoft/slimv'
-      use { "vlime/vlime", rtp = "vim/", ft = { "lisp" } }
+      use {
+        "vlime/vlime",
+        cond = function()
+          return vim.g.vscode == nil
+        end,
+        rtp = "vim/",
+        ft = { "lisp" } }
     end
 
     -- Super fast buffer jump
@@ -185,9 +191,21 @@ packer.startup {
 
     -- File search, tag search and more
     if vim.g.is_win then
-      use { "Yggdroot/LeaderF", cmd = "Leaderf" }
+      use { "Yggdroot/LeaderF",
+      cond = function()
+        return vim.g.vscode == nil
+      end,
+      cmd = "Leaderf"
+    }
     else
-      use { "Yggdroot/LeaderF", cmd = "Leaderf", run = ":LeaderfInstallCExtension" }
+      use {
+        "Yggdroot/LeaderF",
+        cond = function()
+          return vim.g.vscode == nil
+        end,
+        cmd = "Leaderf",
+        run = ":LeaderfInstallCExtension"
+      }
     end
 
     use {
@@ -229,7 +247,13 @@ packer.startup {
     use { "Mofiqul/vscode.nvim", opt = true }
     use { "martinsione/darkplus.nvim", opt = true }
 
-    use { "kyazdani42/nvim-web-devicons", event = "VimEnter" }
+    use {
+      "kyazdani42/nvim-web-devicons",
+      cond = function()
+        return vim.g.vscode == nil
+      end,
+      event = "VimEnter"
+    }
 
     use {
       "nvim-lualine/lualine.nvim",
@@ -251,16 +275,14 @@ packer.startup {
       config = [[require('config.dashboard-nvim')]]
     }
 
-    -- if not vim.g.vscode then
-      use {
-        "lukas-reineke/indent-blankline.nvim",
-        cond = function()
-          return vim.g.vscode == nil
-        end,
-        event = "VimEnter",
-        config = [[require('config.indent-blankline')]],
-      }
-    -- end
+    use {
+      "lukas-reineke/indent-blankline.nvim",
+      cond = function()
+        return vim.g.vscode == nil
+      end,
+      event = "VimEnter",
+      config = [[require('config.indent-blankline')]],
+    }
 
     -- Highlight URLs inside vim
     use {
@@ -278,9 +300,6 @@ packer.startup {
         return vim.g.vscode == nil
       end,
       event = "BufEnter",
-        cond = function()
-          return vim.g.vscode == nil
-        end,
       config = function()
         vim.defer_fn(function()
           require("config.nvim-notify")
