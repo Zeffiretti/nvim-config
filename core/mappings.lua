@@ -224,7 +224,6 @@ keymap.set("c", "<C-A>", "<HOME>")
 
 -- Delete the character to the right of the cursor
 keymap.set("i", "<C-D>", "<DEL>")
-keymap.set("n", "<leader>m", "<space>mf")
 
 keymap.set("n", "<leader>cb", function()
   local cnt = 0
@@ -245,14 +244,14 @@ keymap.set("n", "<leader>cb", function()
   end))
 end)
 
--- use Alt-z to toggle floaterm
-keymap.set("n", "<A-z>", ":FloatermToggle!<CR>")
-keymap.set("t", "<A-z>", "<C-\\><C-n>:FloatermToggle<CR>")
-keymap.set("c", "<A-z>", "<Esc>:FloatermToggle!<CR>")
-keymap.set("i", "<A-z>", "<Esc><C-\\><C-n>:FloatermToggle!<CR>")
-keymap.set("v", "<A-z>", "<Esc>:FloatermToggle!<CR>")
+-- use Option-z to toggle floaterm
 keymap.set("n", "<M-z>", ":FloatermToggle!<CR>")
-keymap.set("t", "<A-z>", "<C-\\><C-n>:FloatermToggle<CR>")
+keymap.set("t", "<M-z>", "<C-\\><C-n>:FloatermToggle<CR>")
+keymap.set("c", "<M-z>", "<Esc>:FloatermToggle!<CR>")
+keymap.set("i", "<M-z>", "<Esc><C-\\><C-n>:FloatermToggle!<CR>")
+keymap.set("v", "<M-z>", "<Esc>:FloatermToggle!<CR>")
+keymap.set("n", "<M-z>", ":FloatermToggle!<CR>")
+keymap.set("t", "<M-z>", "<C-\\><C-n>:FloatermToggle<CR>")
 
 -- use ctrl-/ to toggle comment
 keymap.set("n", "<C-_>", ":Commentary<CR>")
