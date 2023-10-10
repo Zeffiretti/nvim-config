@@ -167,6 +167,7 @@ let g:better_escape_interval = 200
 
 """"""""""""""""""""""""""""vim-xkbswitch settings"""""""""""""""""""""""""
 let g:XkbSwitchEnabled = 1
+" let g:XkbSwitchLib="/usr/local/bin/libxkbswitch.dylib"
 
 """""""""""""""""""""""""""""" neoformat settings """""""""""""""""""""""
 let g:neoformat_enabled_python = ['black', 'yapf']
@@ -384,7 +385,10 @@ endif
 nnoremap <leader>dp :<C-U>GdbStartPDB python -m pdb %<CR>
 
 """"""""""""""""""""""""""""""wilder.nvim settings""""""""""""""""""""""""""""""
-call timer_start(250, { -> s:wilder_init() })
+if exists("g:vscode")
+else
+  call timer_start(250, { -> s:wilder_init() })
+endif
 
 function! s:wilder_init() abort
   try
@@ -431,6 +435,9 @@ endfunction
 
 """"""""""""""""""""""""""""""vim-auto-save settings""""""""""""""""""""""""""""""
 let g:auto_save = 1  " enable AutoSave on Vim startup
+if exists("g:vscode")
+  let g:auto_save = 0 " Disable AutoSave if opening vscode
+endif
 
 """"""""""""""""""""""""""""""floaterm shell settings""""""""""""""""""""""""""""""
 " let g:floaterm_title = "Console"

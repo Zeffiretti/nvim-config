@@ -245,13 +245,21 @@ keymap.set("n", "<leader>cb", function()
 end)
 
 -- use Option-z to toggle floaterm
-keymap.set("n", "<M-z>", ":FloatermToggle!<CR>")
-keymap.set("t", "<M-z>", "<C-\\><C-n>:FloatermToggle<CR>")
-keymap.set("c", "<M-z>", "<Esc>:FloatermToggle!<CR>")
-keymap.set("i", "<M-z>", "<Esc><C-\\><C-n>:FloatermToggle!<CR>")
-keymap.set("v", "<M-z>", "<Esc>:FloatermToggle!<CR>")
-keymap.set("n", "<M-z>", ":FloatermToggle!<CR>")
-keymap.set("t", "<M-z>", "<C-\\><C-n>:FloatermToggle<CR>")
+keymap.set("n", "<D-z>", ":FloatermToggle!<CR>")
+keymap.set("t", "<D-z>", "<C-\\><C-n>:FloatermToggle<CR>")
+keymap.set("c", "<D-z>", "<Esc>:FloatermToggle!<CR>")
+keymap.set("i", "<D-z>", "<Esc><C-\\><C-n>:FloatermToggle!<CR>")
+keymap.set("v", "<D-z>", "<Esc>:FloatermToggle!<CR>")
+keymap.set("n", "<D-z>", ":FloatermToggle!<CR>")
+keymap.set("t", "<D-z>", "<C-\\><C-n>:FloatermToggle<CR>")
+
+keymap.set("n", "zz", ":FloatermToggle!<CR>")
+keymap.set("t", "zz", "<C-\\><C-n>:FloatermToggle<CR>")
+keymap.set("c", "zz", "<Esc>:FloatermToggle!<CR>")
+-- keymap.set("i", "zz", "<Esc><C-\\><C-n>:FloatermToggle!<CR>")
+keymap.set("v", "zz", "<Esc>:FloatermToggle!<CR>")
+keymap.set("n", "zz", ":FloatermToggle!<CR>")
+keymap.set("t", "zz", "<C-\\><C-n>:FloatermToggle<CR>")
 
 -- use ctrl-/ to toggle comment
 keymap.set("n", "<C-_>", ":Commentary<CR>")
