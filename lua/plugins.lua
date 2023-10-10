@@ -200,9 +200,9 @@ packer.startup {
     else
       use {
         "Yggdroot/LeaderF",
-        cond = function()
-          return vim.g.vscode == nil
-        end,
+        -- cond = function()
+        --   return vim.g.vscode == nil
+        -- end,
         cmd = "Leaderf",
         run = ":LeaderfInstallCExtension"
       }
@@ -277,6 +277,7 @@ packer.startup {
 
     use {
       "lukas-reineke/indent-blankline.nvim",
+      tag = "v2.20.8",
       cond = function()
         return vim.g.vscode == nil
       end,
@@ -362,6 +363,11 @@ packer.startup {
 
     -- Multiple cursor plugin like Sublime Text?
     -- use 'mg979/vim-visual-multi'
+
+    -- Fast cursor. This plugin solve the issue relating vscode code auto unfolding
+    -- when move cursor up and downward.
+    -- https://github.com/vscode-neovim/vscode-neovim/issues/1488
+    use { "xiyaowong/fast-cursor-move.nvim", event = "VimEnter" }
 
     -- Autosave files on certain events
     use {
@@ -566,7 +572,15 @@ packer.startup {
     -- end
 
     -- The missing auto-completion for cmdline!
-    use { "gelguy/wilder.nvim", opt = true, setup = [[vim.cmd('packadd wilder.nvim')]] }
+    use {
+      "gelguy/wilder.nvim",
+      cond = function()
+        return vim.g.vscode == nil
+      end,
+      opt = true,
+
+      setup = [[vim.cmd('packadd wilder.nvim')]]
+    }
 
     -- showing keybindings
     use {
@@ -610,6 +624,7 @@ packer.startup {
 
     use {
       "j-hui/fidget.nvim",
+      tag = "legacy",
       after = "nvim-lspconfig",
       config = [[require('config.fidget-nvim')]],
       cond = function()

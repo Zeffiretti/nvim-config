@@ -19,6 +19,16 @@ if exists("g:neovide")
   let g:neovide_profiler = v:false
   let g:neovide_cursor_vfx_mode = "railgun"
   " let g:neovide_refresh_rate = 60
+  " let g:neovide_input_macos_alt_is_meta = v:false
+
+  " keymap.set("n", "<D-z>", ":FloatermToggle!<CR>")
+  " keymap.set("t", "<D-z>", "<C-\\><C-n>:FloatermToggle<CR>")
+  " keymap.set("c", "<D-z>", "<Esc>:FloatermToggle!<CR>")
+  " keymap.set("i", "<D-z>", "<Esc><C-\\><C-n>:FloatermToggle!<CR>")
+  " keymap.set("v", "<D-z>", "<Esc>:FloatermToggle!<CR>")
+  " keymap.set("n", "<D-z>", ":FloatermToggle!<CR>")
+  " keymap.set("t", "<D-z>", "<C-\\><C-n>:FloatermToggle<CR>")
+
 endif
 
 if exists("g:nvy")
@@ -35,6 +45,15 @@ if exists("g:vscode")
   nnoremap <leader>sv :call VSCodeCall("workbench.action.selectTheme")<CR>
   nnoremap q :call VSCodeCall("workbench.action.files.save")<CR>
   set syntax=off
+  " let g:auto_save = 0  " enable AutoSave on Vim startup
+  command Gitlog :call VSCodeCall("git-graph.view")
+  cnoreabbrev gitlog Gitlog
+  cnoreabbrev gl Gitlog
+  command Palette :call VSCodeCall("workbench.action.showCommands")
+  cnoreabbrev pa Palette
+  " nnoremap j gj
+  " nnoremap k gk
+
   " xmap <C-/> <Plug>VSCodeCommentarygv
   " nmap <C-/> <Plug>VSCodeCommentaryLinegv
   " nnoremap <alt-/> :call VSCodeCall("e)gvditor.action.commentLine")<CR>
