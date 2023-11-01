@@ -358,16 +358,17 @@ packer.startup {
       event = "InsertEnter"
     }
 
+    -- Fast cursor. This plugin solve the issue relating vscode code auto unfolding
+    -- when move cursor up and downward.
+    -- https://github.com/vscode-neovim/vscode-neovim/issues/1488
+    -- use { "xiyaowong/fast-cursor-move.nvim", event = "VimEnter" }
+    -- use { "zeffiretti/fast-cursor-move.nvim", after = "vim-commentary" }
+
     -- Comment plugin
     use { "tpope/vim-commentary", event = "VimEnter" }
 
     -- Multiple cursor plugin like Sublime Text?
     -- use 'mg979/vim-visual-multi'
-
-    -- Fast cursor. This plugin solve the issue relating vscode code auto unfolding
-    -- when move cursor up and downward.
-    -- https://github.com/vscode-neovim/vscode-neovim/issues/1488
-    use { "xiyaowong/fast-cursor-move.nvim", event = "VimEnter" }
 
     -- Autosave files on certain events
     use {
