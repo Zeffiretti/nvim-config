@@ -321,8 +321,8 @@ endif
 """"""""""""""""""""""""""""vim-matchup settings"""""""""""""""""""""""""""""
 " Improve performance
 let g:matchup_matchparen_deferred = 1
-let g:matchup_matchparen_timeout = 100
-let g:matchup_matchparen_insert_timeout = 30
+let g:matchup_matchparen_timeout = 1000
+let g:matchup_matchparen_insert_timeout = 1000
 
 " Enhanced matching with matchup plugin
 let g:matchup_override_vimtex = 1
@@ -330,8 +330,8 @@ let g:matchup_override_vimtex = 1
 " Whether to enable matching inside comment or string
 let g:matchup_delim_noskips = 0
 
-" Show offscreen match pair in popup window
-let g:matchup_matchparen_offscreen = {'method': 'popup'}
+" Show offscreen match pair in status line
+let g:matchup_matchparen_offscreen = {'method': 'status'}
 
 """""""""""""""""""""""""" asyncrun.vim settings """"""""""""""""""""""""""
 " Automatically open quickfix window of 6 line tall after asyncrun starts
@@ -385,9 +385,8 @@ endif
 nnoremap <leader>dp :<C-U>GdbStartPDB python -m pdb %<CR>
 
 """"""""""""""""""""""""""""""wilder.nvim settings""""""""""""""""""""""""""""""
-if exists("g:vscode")
-else
-  call timer_start(250, { -> s:wilder_init() })
+if !exists("g:vscode")
+call timer_start(250, { -> s:wilder_init() })
 endif
 
 function! s:wilder_init() abort

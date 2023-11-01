@@ -284,3 +284,25 @@ keymap.set("i", "<C-h>", "<Left>")
 keymap.set("i", "<C-j>", "<Down>")
 keymap.set("i", "<C-k>", "<Up>")
 keymap.set("i", "<C-l>", "<Right>")
+
+local function moveCursor(direction)
+  if (vim.fn.reg_recording() == '' and vim.fn.reg_executing() == '') then
+      return ('g' .. direction)
+  else
+      if direction == 'j' then
+        return "<Down>"
+      else
+        return "<Up>"
+      end
+      -- return direction
+  end
+end
+
+if vim.g.vscode then
+  keymap.set('n', 'k', function()
+    return moveCursor('k')
+  end, { expr = true, remap = true })
+  keymap.set('n', 'j', function()
+      return moveCursor('j')
+  end, { expr = true, remap = true })
+end

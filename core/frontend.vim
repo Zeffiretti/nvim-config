@@ -46,15 +46,37 @@ if exists("g:vscode")
   nnoremap q :call VSCodeCall("workbench.action.files.save")<CR>
   set syntax=off
   " let g:auto_save = 0  " enable AutoSave on Vim startup
-  command Gitlog :call VSCodeCall("git-graph.view")
+  command Gitlog :call VSCodeNotify("git-graph.view")
   cnoreabbrev gitlog Gitlog
   cnoreabbrev gl Gitlog
-  command Palette :call VSCodeCall("workbench.action.showCommands")
+  command Palette :call VSCodeNotify("workbench.action.showCommands")
   cnoreabbrev pa Palette
+  " nnoremap j :call VSCodeNotify("cursorDown")<CR>
+  " nnoremap k :call VSCodeNotify("cursorUp")<CR>
   " nnoremap j gj
   " nnoremap k gk
 
   " xmap <C-/> <Plug>VSCodeCommentarygv
   " nmap <C-/> <Plug>VSCodeCommentaryLinegv
   " nnoremap <alt-/> :call VSCodeCall("e)gvditor.action.commentLine")<CR>
+  " nnoremap zM :call VSCodeNotify('editor.foldAll')<CR>
+  " nnoremap zR :call VSCodeNotify('editor.unfoldAll')<CR>
+  " nnoremap zc :call VSCodeNotify('editor.fold')<CR>
+  " nnoremap zC :call VSCodeNotify('editor.foldRecursively')<CR>
+  " nnoremap zo :call VSCodeNotify('editor.unfold')<CR>
+  " nnoremap zO :call VSCodeNotify('editor.unfoldRecursively')<CR>
+  " nnoremap za :call VSCodeNotify('editor.toggleFold')<CR>
+
+  " function! MoveCursor(direction) abort
+  "     if(reg_recording() == '' && reg_executing() == '')
+  "         return 'g'.a:direction
+  "     else
+  "         return a:direction
+  "     endif
+  " endfunction
+
+  " nmap <expr> j MoveCursor('j')
+  " nmap <expr> k MoveCursor('k')
+
 endif
+
