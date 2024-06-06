@@ -23,6 +23,7 @@ keymap.set("n", "<leader>q", "<cmd>x<cr>", { silent = true, desc = "quit current
 
 -- Quit all opened buffers
 keymap.set("n", "<leader>Q", "<cmd>qa!<cr>", { silent = true, desc = "quit nvim" })
+keymap.set("n", "<leader>z", "<cmd>qa!<cr>", { silent = true, desc = "quit nvim" })
 
 -- Navigation in the location and quickfix list
 keymap.set("n", "[l", "<cmd>lprevious<cr>zv", { silent = true, desc = "previous location item" })
@@ -204,16 +205,16 @@ keymap.set("i", "<A-;>", "<Esc>miA;<Esc>`ii")
 -- Keep cursor position after yanking
 keymap.set("n", "y", "myy")
 
-api.nvim_create_autocmd("TextYankPost", {
-  pattern = "*",
-  group = api.nvim_create_augroup("restore_after_yank", { clear = true }),
-  callback = function()
-    vim.cmd([[
-      silent! normal! `y
-      silent! delmarks y
-    ]])
-  end,
-})
+-- api.nvim_create_autocmd("TextYankPost", {
+--   pattern = "*",
+--   group = api.nvim_create_augroup("restore_after_yank", { clear = true }),
+--   callback = function()
+--     vim.cmd([[
+--       silent! normal! `y
+--       silent! delmarks y
+--     ]])
+--   end,
+-- })
 
 -- Go to the beginning and end of current line in insert mode quickly
 keymap.set("i", "<C-A>", "<HOME>")
@@ -255,11 +256,11 @@ keymap.set("t", "<D-z>", "<C-\\><C-n>:FloatermToggle<CR>")
 
 keymap.set("n", "zz", ":FloatermToggle!<CR>")
 keymap.set("t", "zz", "<C-\\><C-n>:FloatermToggle<CR>")
-keymap.set("c", "zz", "<Esc>:FloatermToggle!<CR>")
+-- keymap.set("c", "zz", "<Esc>:FloatermToggle!<CR>")
 -- keymap.set("i", "zz", "<Esc><C-\\><C-n>:FloatermToggle!<CR>")
 keymap.set("v", "zz", "<Esc>:FloatermToggle!<CR>")
 keymap.set("n", "zz", ":FloatermToggle!<CR>")
-keymap.set("t", "zz", "<C-\\><C-n>:FloatermToggle<CR>")
+-- keymap.set("t", "zz", "<C-\\><C-n>:FloatermToggle<CR>")
 
 -- use ctrl-/ to toggle comment
 keymap.set("n", "<C-_>", ":Commentary<CR>")
@@ -268,10 +269,16 @@ keymap.set("i", "<C-_>", "<Esc>:Commentary<CR><Esc>i")
 keymap.set("n", "<C-/>", ":Commentary<CR>")
 keymap.set("v", "<C-/>", ":Commentary<CR>")
 keymap.set("i", "<C-/>", "<Esc>:Commentary<CR><Esc>i")
+keymap.set("n", "<leader>c", ":Commentary<CR>")
+keymap.set("v", "<leader>c", ":Commentary<CR>")
+keymap.set("i", "<leader>c", "<Esc>:Commentary<CR><Esc>i")
 
-keymap.set("n", "q", ":qall<CR>")
-
-keymap.set("n", "<Esc>", ":w<CR><Esc>")
+if not vim.g.vscode then
+  keymap.set("n", "<Esc>", ":w<CR><Esc>")
+end
+keymap.set("n", "^[", ":w<CR><Esc>")
+keymap.set("i", "^[", "<Esc>")
+keymap.set("v", "^[", "<Esc>")
 
 -- project nvim uses F4 and F5 to pop up telescope window
 keymap.set("n", "<F4>", ":ProjectRoot<CR>")
@@ -284,6 +291,8 @@ keymap.set("i", "<C-h>", "<Left>")
 keymap.set("i", "<C-j>", "<Down>")
 keymap.set("i", "<C-k>", "<Up>")
 keymap.set("i", "<C-l>", "<Right>")
+
+keymap.set("n", "<leader>l", ":set hls!<CR>")
 
 local function moveCursor(direction)
   if (vim.fn.reg_recording() == '' and vim.fn.reg_executing() == '') then

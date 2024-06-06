@@ -36,6 +36,7 @@ local core_conf_files = {
   "other.vim", -- other custom settings, which will ovewrite those set int above files
   "headerguard.vim",
   "frontend.vim",
+  "abbr.vim",
 }
 
 -- source all the core config files

@@ -4,7 +4,7 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if exists("g:neovide")
   set guifont=CaskaydiaCove\ Nerd\ Font\ Mono:h20
-  let g:neovide_transparency = 1.0
+  let g:neovide_transparency = 0.8
   let g:neovide_cursor_animation_length = 0.1
   let g:neovide_cursor_trail_size=0.3
   let g:neovide_cursor_vfx_mode = ""
@@ -45,7 +45,7 @@ if exists("g:vscode")
   nnoremap <leader>sv :call VSCodeCall("workbench.action.selectTheme")<CR>
   nnoremap q :call VSCodeCall("workbench.action.files.save")<CR>
   set syntax=off
-  " let g:auto_save = 0  " enable AutoSave on Vim startup
+  let g:auto_save = 1  " enable AutoSave on Vim startup
   command Gitlog :call VSCodeNotify("git-graph.view")
   cnoreabbrev gitlog Gitlog
   cnoreabbrev gl Gitlog

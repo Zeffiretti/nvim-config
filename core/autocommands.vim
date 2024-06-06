@@ -133,6 +133,8 @@ autocmd BufWritePre,BufRead *.cpp :inoremap <Enter> <c-r>=BracketsEnter('}')<CR>
 autocmd BufWritePre,BufRead *.cc :inoremap <Enter> <c-r>=BracketsEnter('}')<CR>
 autocmd BufWritePre,BufRead *.h :inoremap <Enter> <c-r>=BracketsEnter('}')<CR>
 
+" autocmd InsertLeave * call jobstart("/opt/homebrew/bin/im-select com.apple.keylayout.ABC")
+
 function BracketsEnter(char)
     if getline('.')[col('.')-1] == a:char
         return "\<Enter>\<Tab>\<Esc>mpa\<Enter>\<Esc>`pa"

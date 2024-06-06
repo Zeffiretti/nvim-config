@@ -59,14 +59,14 @@ endif
 let g:Lf_DefaultMode = 'FullPath'
 
 " Popup window settings
-let w = float2nr(&columns * 0.8)
+let w = float2nr(&columns * 0.5)
 if w > 140
   let g:Lf_PopupWidth = 140
 else
   let g:Lf_PopupWidth = w
 endif
 
-let g:Lf_PopupPosition = [0, float2nr((&columns - g:Lf_PopupWidth)/2)]
+let g:Lf_PopupPosition = [0, float2nr((w - g:Lf_PopupWidth)/2)]
 
 " Do not use version control tool to list files under a directory since
 " submodules are not searched by default.
@@ -115,8 +115,8 @@ if g:is_win || g:is_mac
   let g:netrw_nogx = 1
 
   " Use another mapping for the open URL method
-  nmap ob <Plug>(openbrowser-smart-search)
-  xmap ob <Plug>(openbrowser-smart-search)
+  nmap go <Plug>(openbrowser-smart-search)
+  xmap go <Plug>(openbrowser-smart-search)
 endif
 
 """"""""""""""""""""""""""" vista settings """"""""""""""""""""""""""""""""""
@@ -166,7 +166,9 @@ endif
 let g:better_escape_interval = 200
 
 """"""""""""""""""""""""""""vim-xkbswitch settings"""""""""""""""""""""""""
-let g:XkbSwitchEnabled = 1
+if !exists("g:vscode")
+  let g:XkbSwitchEnabled = 1
+endif
 " let g:XkbSwitchLib="/usr/local/bin/libxkbswitch.dylib"
 
 """""""""""""""""""""""""""""" neoformat settings """""""""""""""""""""""
