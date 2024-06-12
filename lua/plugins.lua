@@ -604,10 +604,10 @@ packer.startup {
     }
 
     -- oscyank for remote using
-    -- use {
-    --   "ojroques/vim-oscyank",
-    --   branch="main",
-    -- }
+    use {
+      "ojroques/vim-oscyank",
+      branch="main",
+    }
 
     -- use { "tibabit/vim-templates" }
 
