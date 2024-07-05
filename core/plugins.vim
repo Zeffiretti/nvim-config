@@ -435,9 +435,10 @@ function! s:wilder_init() abort
 endfunction
 
 """"""""""""""""""""""""""""""vim-auto-save settings""""""""""""""""""""""""""""""
-let g:auto_save = 1  " enable AutoSave on Vim startup
 if exists("g:vscode")
   let g:auto_save = 0 " Disable AutoSave if opening vscode
+else
+  let g:auto_save = 1  " enable AutoSave on Vim startup
 endif
 
 """"""""""""""""""""""""""""""floaterm shell settings""""""""""""""""""""""""""""""

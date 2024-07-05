@@ -45,7 +45,6 @@ if exists("g:vscode")
   nnoremap <leader>sv :call VSCodeCall("workbench.action.selectTheme")<CR>
   nnoremap q :call VSCodeCall("workbench.action.files.save")<CR>
   set syntax=off
-  let g:auto_save = 1  " enable AutoSave on Vim startup
   command Gitlog :call VSCodeNotify("git-graph.view")
   cnoreabbrev gitlog Gitlog
   cnoreabbrev gl Gitlog
