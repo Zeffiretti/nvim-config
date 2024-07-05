@@ -542,12 +542,13 @@ packer.startup {
 
     use { "ii14/emmylua-nvim", ft = "lua" }
 
-    -- use {
-    --   "j-hui/fidget.nvim",
-    --   tag = "legacy",
-    --   after = "nvim-lspconfig",
-    --   config = [[require('config.fidget-nvim')]],
-    -- }
+    use {
+      "j-hui/fidget.nvim",
+      tag = "legacy",
+      after = "nvim-lspconfig",
+      -- config = [[require('config.fidget-nvim')]],
+      cond = vscode_not_activate
+    }
 
     -- wakatime to record coding time
     use { "wakatime/vim-wakatime" }
