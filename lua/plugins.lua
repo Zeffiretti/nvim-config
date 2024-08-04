@@ -44,11 +44,7 @@ local firenvim_not_active = function()
 end
 
 local vscode_not_activate = function()
-  if vim.g.vscode then
-    return false
-  else
-    return true
-  end
+  return true
 end
 
 packer.startup {
@@ -60,14 +56,14 @@ packer.startup {
 
     use { "onsails/lspkind-nvim",
       -- after = "copilot.lua",
-      cond = vscode_not_activate,
+      -- cond = vscode_not_activate,
       event = "VimEnter"
     }
     -- auto-completion engine
     use {
       "hrsh7th/nvim-cmp",
       -- commit = "6ed1c93465c33f6a53b4c3f103bf9d1ab696382a",
-      cond = vscode_not_activate,
+      -- cond = vscode_not_activate,
       after = "lspkind-nvim",
       config = [[require('config.nvim-cmp')]],
     }
@@ -75,33 +71,33 @@ packer.startup {
     -- nvim-cmp completion sources
     use {
       "hrsh7th/cmp-nvim-lsp",
-      cond = vscode_not_activate,
+      -- cond = vscode_not_activate,
       after = "nvim-cmp"
     }
     use {
       "hrsh7th/cmp-path",
-      cond = vscode_not_activate,
+      -- cond = vscode_not_activate,
       after = "nvim-cmp"
     }
     use {
       "hrsh7th/cmp-buffer",
-      cond = vscode_not_activate,
+      -- cond = vscode_not_activate,
       after = "nvim-cmp"
     }
     use {
       "hrsh7th/cmp-omni",
-      cond = vscode_not_activate,
+      -- cond = vscode_not_activate,
       after = "nvim-cmp"
     }
     use {
       "quangnguyen30192/cmp-nvim-ultisnips",
-      cond = vscode_not_activate,
+      -- cond = vscode_not_activate,
       after = { "nvim-cmp", "ultisnips" }
     }
     if vim.g.is_mac then
       use {
         "hrsh7th/cmp-emoji",
-        cond = vscode_not_activate,
+        -- cond = vscode_not_activate,
         after = "nvim-cmp"
       }
     end
@@ -109,7 +105,7 @@ packer.startup {
     -- nvim-lsp configuration (it relies on cmp-nvim-lsp, so it should be loaded after cmp-nvim-lsp).
     use {
       "neovim/nvim-lspconfig",
-      cond = vscode_not_activate,
+      -- cond = vscode_not_activate,
       after = "cmp-nvim-lsp",
       config = [[require('config.lsp')]]
     }
@@ -118,7 +114,7 @@ packer.startup {
       use {
         "nvim-treesitter/nvim-treesitter",
         -- after = "copilot.lua",
-        cond = vscode_not_activate,
+        -- cond = vscode_not_activate,
         event = "BufEnter",
         run = ":TSUpdate",
         config = [[require('config.treesitter')]],
@@ -128,14 +124,14 @@ packer.startup {
     -- Python indent (follows the PEP8 style)
     use {
       "Vimjas/vim-python-pep8-indent",
-      cond = vscode_not_activate,
+      -- cond = vscode_not_activate,
       ft = { "python" }
     }
 
     -- Python-related text object
     use {
       "jeetsukumaran/vim-pythonsense",
-      cond = vscode_not_activate,
+      -- cond = vscode_not_activate,
       ft = { "python" }
     }
 
@@ -221,31 +217,31 @@ packer.startup {
 
     use {
       "kyazdani42/nvim-web-devicons",
-      cond = vscode_not_activate,
+      -- cond = vscode_not_activate,
       event = "VimEnter"
     }
 
     use {
       "nvim-lualine/lualine.nvim",
-      cond = vscode_not_activate,
+      -- cond = vscode_not_activate,
       event = "VimEnter",
       cond = firenvim_not_active,
       config = [[require('config.statusline')]],
     }
 
     use { "akinsho/bufferline.nvim", event = "VimEnter",
-      cond = firenvim_not_active and vscode_not_activate,
+      cond = firenvim_not_active,
       config = [[require('config.bufferline')]] }
 
     -- fancy start screen
     use { "glepnir/dashboard-nvim", event = "VimEnter",
-      cond = firenvim_not_active and vscode_not_activate,
+      cond = firenvim_not_active,
       config = [[require('config.dashboard-nvim')]]
     }
 
     use {
       "lukas-reineke/indent-blankline.nvim",
-      cond = vscode_not_activate,
+      -- cond = vscode_not_activate,
       tag = "v2.20.8",
       event = "VimEnter",
       config = [[require('config.indent-blankline')]],
@@ -254,14 +250,14 @@ packer.startup {
     -- Highlight URLs inside vim
     use {
       "itchyny/vim-highlighturl",
-      cond = vscode_not_activate,
+      -- cond = vscode_not_activate,
       event = "VimEnter"
     }
 
     -- notification plugin
     use {
       "rcarriga/nvim-notify",
-      cond = vscode_not_activate,
+      -- cond = vscode_not_activate,
       event = "BufEnter",
       config = function()
         vim.defer_fn(function()
@@ -342,7 +338,7 @@ packer.startup {
 
     use { "nvim-zh/better-escape.vim", event = { "InsertEnter" } }
 
-    use { "lyokha/vim-xkbswitch", event = { "InsertEnter" }, cond = vscode_not_activate }
+    use { "lyokha/vim-xkbswitch", event = { "InsertEnter" } }
     -- if vim.g.is_mac then
     --   use { "lyokha/vim-xkbswitch", event = { "InsertEnter" } }
     -- elseif vim.g.is_win then
@@ -355,7 +351,7 @@ packer.startup {
     -- Git command inside vim
     use {
       "tpope/vim-fugitive",
-      cond = vscode_not_activate,
+      -- cond = vscode_not_activate,
       event = "User InGitRepo",
       config = [[require('config.fugitive')]]
     }
@@ -375,7 +371,7 @@ packer.startup {
 
     use {
       "ruifm/gitlinker.nvim",
-      cond = vscode_not_activate,
+      -- cond = vscode_not_activate,
       requires = "nvim-lua/plenary.nvim",
       event = "User InGitRepo",
       config = [[require('config.git-linker')]],
@@ -384,7 +380,7 @@ packer.startup {
     -- Show git change (change, delete, add) signs in vim sign column
     use {
       "lewis6991/gitsigns.nvim",
-      cond = vscode_not_activate,
+      -- cond = vscode_not_activate,
       config = [[require('config.gitsigns')]]
     }
 
@@ -399,14 +395,14 @@ packer.startup {
     -- Another markdown plugin
     use {
       "preservim/vim-markdown",
-      cond = vscode_not_activate,
+      -- cond = vscode_not_activate,
       ft = { "markdown" }
     }
 
     -- Faster footnote generation
     use {
       "vim-pandoc/vim-markdownfootnotes",
-      cond = vscode_not_activate,
+      -- cond = vscode_not_activate,
       ft = { "markdown" }
     }
 
@@ -420,7 +416,7 @@ packer.startup {
     -- if vim.g.is_win or vim.g.is_mac or vim.is_linux then
       use {
         "iamcco/markdown-preview.nvim",
-        cond = vscode_not_activate,
+        -- cond = vscode_not_activate,
         run = "cd app && npm install",
         ft = { "markdown" },
       }
@@ -429,10 +425,10 @@ packer.startup {
     use { "folke/zen-mode.nvim", cmd = "ZenMode", config = [[require('config.zen-mode')]] }
 
     if vim.g.is_mac then
-      use { "rhysd/vim-grammarous", ft = { "markdown" }, cond = vscode_not_activate }
+      use { "rhysd/vim-grammarous", ft = { "markdown" } }
     end
 
-    use { "chrisbra/unicode.vim", event = "VimEnter", cond = vscode_not_activate }
+    use { "chrisbra/unicode.vim", event = "VimEnter" }
 
     -- Additional powerful text object for vim, this plugin should be studied
     -- carefully to use its full power
@@ -444,7 +440,7 @@ packer.startup {
     -- Add indent object for vim (useful for languages like Python)
     use {
       "michaeljsmith/vim-indent-object",
-      cond = vscode_not_activate,
+      -- cond = vscode_not_activate,
       event = "VimEnter",
     }
 
@@ -474,7 +470,7 @@ packer.startup {
     if vim.g.is_win or vim.g.is_mac then
       use {
         "glacambre/firenvim",
-        cond = vscode_not_activate,
+        -- cond = vscode_not_activate,
         run = function()
           fn["firenvim#install"](0)
         end,
@@ -516,12 +512,12 @@ packer.startup {
     }
 
     -- show and trim trailing whitespaces
-    use { "jdhao/whitespace.nvim", event = "VimEnter", cond = vscode_not_activate }
+    use { "jdhao/whitespace.nvim", event = "VimEnter" }
 
     -- file explorer
     use {
       "kyazdani42/nvim-tree.lua",
-      cond = vscode_not_activate,
+      -- cond = vscode_not_activate,
       -- after = "copilot.lua",
       commit = "3ce0a8e770f70a135ef969e0a640bd8d05baf42c",
       requires = { "kyazdani42/nvim-web-devicons" },
@@ -547,7 +543,7 @@ packer.startup {
       tag = "legacy",
       after = "nvim-lspconfig",
       -- config = [[require('config.fidget-nvim')]],
-      cond = vscode_not_activate
+      -- cond = vscode_not_activate
     }
 
     -- wakatime to record coding time
@@ -578,7 +574,7 @@ packer.startup {
     --   }
     --   -- vim.g.floaterm_shell = "pwsh"
     -- else
-      use { 'voldikss/vim-floaterm', cond = vscode_not_activate }
+      use { 'voldikss/vim-floaterm' }
     -- end
     -- use { 'voldikss/vim-floaterm',
     --       -- config = function()
@@ -632,7 +628,7 @@ packer.startup {
 
     use {
       "keaising/im-select.nvim",
-      cond = vscode_not_activate,
+      -- cond = vscode_not_activate,
      -- config = function()
      --   require("im_select").setup({
      --       -- IM will be set to `default_im_select` in `normal` mode
