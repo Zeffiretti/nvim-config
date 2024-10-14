@@ -18,6 +18,7 @@ if exists("g:neovide")
   let g:neovide_floating_blur_amount_y = 2.0
   let g:neovide_profiler = v:false
   let g:neovide_cursor_vfx_mode = "railgun"
+  set autochdir
   " let g:neovide_refresh_rate = 60
   " let g:neovide_input_macos_alt_is_meta = v:false
 
@@ -36,6 +37,7 @@ if exists("g:nvy")
 endif
 
 if exists("g:vscode")
+  set cmdheight=10 " avoid neovim print message to vscode output panel
   nnoremap gr :call VSCodeCall("editor.action.referenceSearch.trigger")<CR>
   " nnoremap j :call VSCodeCall("cursorDown")<CR>
   " nnoremap k :call VSCodeCall("cursorUp")<CR>
@@ -44,6 +46,7 @@ if exists("g:vscode")
   nnoremap <alt-c> :Commentary<CR>
   nnoremap <leader>sv :call VSCodeCall("workbench.action.selectTheme")<CR>
   nnoremap q :call VSCodeCall("workbench.action.files.save")<CR>
+  nnoremap go :call VSCodeCall("editor.action.openLink")<CR>
   set syntax=off
   command Gitlog :call VSCodeNotify("git-graph.view")
   cnoreabbrev gitlog Gitlog
