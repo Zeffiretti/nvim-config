@@ -106,7 +106,7 @@ M.rand_colorscheme = function()
   if vim.g.vscode then
     colorscheme = "darkplus"
   else
-    colorscheme = "doom_one"
+    colorscheme = "kanagawa"
   end
 
   if not vim.tbl_contains(vim.tbl_keys(M), colorscheme) then
