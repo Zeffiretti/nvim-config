@@ -20,6 +20,7 @@ M.colorscheme2dir = {
   kanagawa = "kanagawa.nvim",
   catppuccin = "catppuccin",
   vscode = "vscode.nvim",
+  papercolor = "papercolor-theme"
 }
 
 M.darkplus = function()
@@ -82,7 +83,28 @@ M.nightfox = function()
 end
 
 M.kanagawa = function()
-  vim.cmd([[colorscheme kanagawa]])
+  require("kanagawa").setup({
+    transparent = true,
+    colors = {
+      theme = {
+        all = {
+          ui = {
+            bg_gutter = "none"
+          }
+        }
+      },
+      palette = {
+        oniViolet = "#9A00DB",
+        crystalBlue = "#008CDB",
+        fujiGray = "#A3D4D5",
+        -- fujiWhite = "#ffffff",
+        -- sumlink4 = "#ffffff"
+      }
+    },
+    theme = "wave",
+  })
+  vim.cmd([[colorscheme kanagawa-lotus]])
+  -- vim.cmd([[colorscheme kanagawa]])
 end
 
 M.catppuccin = function()
@@ -100,6 +122,40 @@ M.vscode = function()
   vim.cmd([[colorscheme vscode]])
 end
 
+M.papercolor = function()
+  vim.g.PaperColor_Theme_Options = {
+    theme = {
+      default = {
+        transparent_background = 1,
+        light = {
+          override = {
+            color00 = "#eeeeee",
+            color01 = "#af0000",
+            color02 = "#008700",
+            color03 = "#5f8700",
+            color04 = "#0087af",
+            color05 = "#878787",
+            color06 = "#005f87",
+            color07 = "#444444",
+            color08 = "#bcbcbc",
+            color09 = "#d70000",
+            color10 = "#d70087",
+            color11 = "#8700af",
+            color12 = "#d75f00",
+            color13 = "#d75f00",
+            color14 = "#005faf",
+            color15 = "#005f87",
+            linenumber_bg = "['#080808', '#ffffff']",
+            -- linenumber_fg = "['#ffffff', '#ffffff']"
+          }
+        }
+      }
+    }
+  }
+  vim.cmd([[set background=light]])
+  vim.cmd([[colorscheme PaperColor]])
+end
+
 --- Use a random colorscheme from the pre-defined list of colorschemes.
 M.rand_colorscheme = function()
   local colorscheme = utils.rand_element(vim.tbl_keys(M.colorscheme2dir))
@@ -107,6 +163,7 @@ M.rand_colorscheme = function()
     colorscheme = "darkplus"
   else
     colorscheme = "kanagawa"
+    -- colorscheme = "papercolor"
   end
 
   if not vim.tbl_contains(vim.tbl_keys(M), colorscheme) then

@@ -218,6 +218,7 @@ packer.startup {
     use { "catppuccin/nvim", as = "catppuccin", opt = true }
     use { "Mofiqul/vscode.nvim", opt = true }
     use { "martinsione/darkplus.nvim", opt = true }
+    use { 'NLKNguyen/papercolor-theme', opt = true }
 
     use {
       "kyazdani42/nvim-web-devicons",
